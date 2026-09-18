@@ -1,0 +1,1051 @@
+{
+  "authors": [
+    {
+      "id": "1",
+      "name": "Stephen R. Covey",
+      "bio": "American educator, author, and keynote speaker best known for The 7 Habits of Highly Effective People.",
+      "avatarUrl": "https://picsum.photos/80?1",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "2",
+      "name": "James Clear",
+      "bio": "Author and speaker focused on habits, decision making, and continuous improvement.",
+      "avatarUrl": "https://picsum.photos/80?2",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "3",
+      "name": "George Orwell",
+      "bio": "English novelist, essayist, journalist and critic.",
+      "avatarUrl": "https://picsum.photos/80?3",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "4",
+      "name": "Aldous Huxley",
+      "bio": "English writer and philosopher who authored Brave New World.",
+      "avatarUrl": "https://picsum.photos/80?4",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "5",
+      "name": "J.D. Salinger",
+      "bio": "American writer best known for The Catcher in the Rye.",
+      "avatarUrl": "https://picsum.photos/80?5",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "6",
+      "name": "Cal Newport",
+      "bio": "American author and professor of computer science, author of Deep Work.",
+      "avatarUrl": "https://picsum.photos/80?6",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "7",
+      "name": "Don Miguel Ruiz",
+      "bio": "Author of The Four Agreements, a Toltec wisdom book.",
+      "avatarUrl": "https://picsum.photos/80?7",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "8",
+      "name": "F. Scott Fitzgerald",
+      "bio": "American novelist of the Jazz Age, famous for The Great Gatsby.",
+      "avatarUrl": "https://picsum.photos/80?8",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "9",
+      "name": "Yuval Noah Harari",
+      "bio": "Israeli historian and professor, author of Sapiens and Homo Deus.",
+      "avatarUrl": "https://picsum.photos/80?9",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "10",
+      "name": "Benjamin Graham",
+      "bio": "Known as the father of value investing (The Intelligent Investor).",
+      "avatarUrl": "https://picsum.photos/80?10",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "11",
+      "name": "Eric Ries",
+      "bio": "American entrepreneur and author of The Lean Startup.",
+      "avatarUrl": "https://picsum.photos/80?11",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "12",
+      "name": "Charles Duhigg",
+      "bio": "American journalist and non-fiction author, author of The Power of Habit.",
+      "avatarUrl": "https://picsum.photos/80?12",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "13",
+      "name": "Robert Kiyosaki",
+      "bio": "American businessman and author, creator of Rich Dad Poor Dad.",
+      "avatarUrl": "https://picsum.photos/80?13",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "14",
+      "name": "Paulo Coelho",
+      "bio": "Brazilian lyricist and novelist, best known for The Alchemist.",
+      "avatarUrl": "https://picsum.photos/80?14",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "15",
+      "name": "Mark Manson",
+      "bio": "American self-help author and blogger.",
+      "avatarUrl": "https://picsum.photos/80?15",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "16",
+      "name": "Daniel Kahneman",
+      "bio": "Psychologist and economist notable for Thinking, Fast and Slow.",
+      "avatarUrl": "https://picsum.photos/80?16",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "17",
+      "name": "Harper Lee",
+      "bio": "American novelist known for To Kill a Mockingbird.",
+      "avatarUrl": "https://picsum.photos/80?17",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "18",
+      "name": "Dale Carnegie",
+      "bio": "Developer of courses in self-improvement and public speaking.",
+      "avatarUrl": "https://picsum.photos/80?18",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "19",
+      "name": "Naguib Mahfouz",
+      "bio": "Egyptian writer who won the Nobel Prize in Literature.",
+      "avatarUrl": "https://picsum.photos/80?19",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "20",
+      "name": "Tawfiq el-Hakim",
+      "bio": "Prominent Egyptian writer and playwright.",
+      "avatarUrl": "https://picsum.photos/80?20",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "21",
+      "name": "Ahmed Mourad",
+      "bio": "Egyptian contemporary novelist and screenwriter.",
+      "avatarUrl": "https://picsum.photos/80?21",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "22",
+      "name": "Youssef Idries",
+      "bio": "Egyptian prominent writer, playwright and physician.",
+      "avatarUrl": "https://picsum.photos/80?22",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "23",
+      "name": "Ahlam Mosteghanemi",
+      "bio": "Algerian and Arab novelist widely read across the region.",
+      "avatarUrl": "https://picsum.photos/80?23",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "24",
+      "name": "Radwa Ashour",
+      "bio": "Egyptian novelist, academic, and literary critic.",
+      "avatarUrl": "https://picsum.photos/80?24",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "25",
+      "name": "Alaa El Aswany",
+      "bio": "Egyptian novelist and dentist, author of The Yacoubian Building.",
+      "avatarUrl": "https://picsum.photos/80?25",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "26",
+      "name": "Nawal El Saadawi",
+      "bio": "Egyptian feminist writer, activist, and physician.",
+      "avatarUrl": "https://picsum.photos/80?26",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "27",
+      "name": "Ibrahim Abdel Meguid",
+      "bio": "Contemporary Egyptian novelist.",
+      "avatarUrl": "https://picsum.photos/80?27",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "28",
+      "name": "Ahmed Khaled Tawfik",
+      "bio": "Egyptian author, physician, and pioneer of Arab medical horror and sci-fi.",
+      "avatarUrl": "https://picsum.photos/80?28",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "29",
+      "name": "Robert C. Martin",
+      "bio": "Software engineer and author, best known for Clean Code.",
+      "avatarUrl": "https://picsum.photos/80?29",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "30",
+      "name": "Andrew Ng",
+      "bio": "Co-founder of Google Brain, professor at Stanford, and AI expert.",
+      "avatarUrl": "https://picsum.photos/80?30",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "31",
+      "name": "Stuart Russell and Peter Norvig",
+      "bio": "Authors of the definitive textbook on Artificial Intelligence.",
+      "avatarUrl": "https://picsum.photos/80?31",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "32",
+      "name": "Addy Osmani",
+      "bio": "Engineering manager at Google and author of software architecture guides.",
+      "avatarUrl": "https://picsum.photos/80?32",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "33",
+      "name": "Aurélien Géron",
+      "bio": "Former Googler, author, and machine learning consultant.",
+      "avatarUrl": "https://picsum.photos/80?33",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "34",
+      "name": "Luca Caioli",
+      "bio": "Italian sports journalist and author of several acclaimed football biographies.",
+      "avatarUrl": "https://picsum.photos/80?34",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "35",
+      "name": "Miguel Delaney",
+      "bio": "Chief football writer for The Independent and sports author.",
+      "avatarUrl": "https://picsum.photos/80?35",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "36",
+      "name": "Jonathan Wilson",
+      "bio": "Renowned British football writer and tactical analyst.",
+      "avatarUrl": "https://picsum.photos/80?36",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "37",
+      "name": "Guillem Balagué",
+      "bio": "Spanish sports journalist, author, and pundit.",
+      "avatarUrl": "https://picsum.photos/80?37",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "38",
+      "name": "David Goldblatt",
+      "bio": "British sociologist, sports writer, and author of comprehensive football histories.",
+      "avatarUrl": "https://picsum.photos/80?38",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "39",
+      "name": "Louise Hay",
+      "bio": "American motivational author and founder of Hay House, best known for You Can Heal Your Life.",
+      "avatarUrl": "https://picsum.photos/80?39",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "40",
+      "name": "Selim Hassan",
+      "bio": "Prominent Egyptian archaeologist, pioneer of Egyptology, and author of the comprehensive encyclopedia Ancient Egypt.",
+      "avatarUrl": "https://picsum.photos/80?40",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "41",
+      "name": "Toby Wilkinson",
+      "bio": "Prominent British Egyptologist and author specializing in the history of ancient Egypt.",
+      "avatarUrl": "https://picsum.photos/80?41",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "42",
+      "name": "Christian Desroches Noblecourt",
+      "bio": "Renowned French Egyptologist and historian specializing in Queen Hatshepsut and the New Kingdom era.",
+      "avatarUrl": "https://picsum.photos/80?42",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    }
+  ],
+  "books": [
+    {
+      "id": "1",
+      "title": "7 Habits of Highly Effective People",
+      "authorId": 1,
+      "year": 1989,
+      "price": 14.99,
+      "tags": [
+        "self-help",
+        "productivity"
+      ],
+      "coverUrl": "/images/7_habits.png",
+      "description": "A business and self-help book written by Stephen Covey.\nIt presents a principle-centered approach for solving personal and professional problems.\nThrough seven foundational habits, it teaches readers how to cultivate effectiveness and leadership.\nIt remains one of the most influential guidance books for personal development and growth.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "2",
+      "title": "Atomic Habits",
+      "authorId": 2,
+      "year": 2018,
+      "price": 0,
+      "badge": "free",
+      "readUrl": "/pdf/atomic-habits.pdf",
+      "tags": [
+        "self-help",
+        "habits"
+      ],
+      "coverUrl": "/images/atomic_habits.png",
+      "description": "An easy & proven way to build good habits & break bad ones.\nWritten by James Clear, the book focuses on small behavioral shifts that compound into remarkable results.\nIt outlines practical strategies based on biology, psychology, and neuroscience to reshape daily routines.\nReaders discover how to design environments that make success automatic and sustainable over time.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "3",
+      "title": "1984",
+      "authorId": 3,
+      "year": 1949,
+      "price": 0,
+      "badge": "free",
+      "readUrl": "/pdf/1984.pdf",
+      "tags": [
+        "classic",
+        "dystopian"
+      ],
+      "coverUrl": "/images/book_1984.png",
+      "description": "A dystopian social science fiction novel and cautionary tale.\nIt depicts a totalitarian regime led by Big Brother that practices extreme surveillance and mind control.\nThe protagonist, Winston Smith, attempts to rebel against the oppressive party and rediscover individual freedom.\nIt stands as a timeless masterpiece warning against the dangers of authoritarianism and manipulation of truth.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "4",
+      "title": "Brave New World",
+      "authorId": 4,
+      "year": 1932,
+      "price": 12.5,
+      "tags": [
+        "sci-fi",
+        "dystopian"
+      ],
+      "coverUrl": "/images/brave_new_world.png",
+      "description": "A dystopian novel by English author Aldous Huxley.\nIt envisions a futuristic society driven by technological advancements, genetic engineering, and psychological conditioning.\nCitizens are kept perpetually pacified through artificial happiness and the suppression of deep emotion.\nThe narrative challenges readers to consider the true cost of convenience, stability, and loss of individuality.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "5",
+      "title": "The Catcher in the Rye",
+      "authorId": 5,
+      "year": 1951,
+      "price": 9.99,
+      "tags": [
+        "classic",
+        "fiction"
+      ],
+      "coverUrl": "/images/catcher_rye.png",
+      "description": "A story about teenage angst and alienation.\nIt follows the iconic protagonist Holden Caulfield as he wanders through New York City after being expelled.\nThrough Holden's cynical yet vulnerable voice, the book explores themes of innocence, grief, and identity.\nIt has resonated with generations of readers navigating the complex transition from childhood to adulthood.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "6",
+      "title": "Deep Work",
+      "authorId": 6,
+      "year": 2016,
+      "price": 16,
+      "tags": [
+        "productivity",
+        "business"
+      ],
+      "coverUrl": "/images/deep_work.png",
+      "description": "Rules for focused success in a distracted world.\nCal Newport argues that professional activities performed in distraction-free concentration are becoming increasingly rare and valuable.\nHe provides a rigorous framework and actionable training regimen to upgrade cognitive capacity and eliminate shallow tasks.\nThe book demonstrates how mastering this skill leads to superior results in less time.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "7",
+      "title": "The Four Agreements",
+      "authorId": 7,
+      "year": 1997,
+      "price": 11.99,
+      "tags": [
+        "spirituality",
+        "self-help"
+      ],
+      "coverUrl": "/images/four_agreements.png",
+      "description": "A practical guide to personal freedom based on Toltec wisdom.\nDon Miguel Ruiz reveals the source of self-limiting beliefs that rob people of joy and create needless suffering.\nIt outlines four simple yet powerful rules: be impeccable with your word, don't take anything personally, don't make assumptions, and always do your best.\nAdopting these principles helps transform perspective and foster inner peace.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "8",
+      "title": "The Great Gatsby",
+      "authorId": 8,
+      "year": 1925,
+      "price": 8.5,
+      "tags": [
+        "classic",
+        "novel"
+      ],
+      "coverUrl": "/images/great_gatsby.png",
+      "description": "A 1925 novel by American writer F. Scott Fitzgerald.\nSet in the Jazz Age on Long Island, it follows the enigmatic millionaire Jay Gatsby and his obsession with Daisy Buchanan.\nThrough lush prose, it critiques the American Dream against a backdrop of wealth, class division, and moral decay.\nIt remains a cornerstone of American literature and cultural critique.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "9",
+      "title": "Homo Deus",
+      "authorId": 9,
+      "year": 2015,
+      "price": 20,
+      "tags": [
+        "history",
+        "science"
+      ],
+      "coverUrl": "/images/homo_deus.png",
+      "description": "A brief history of tomorrow by Yuval Noah Harari.\nIt explores the grand projects facing humanity in the 21st century, shifting from overcoming famine and plague to pursuing immortality and happiness.\nThe book investigates how dataism and artificial intelligence might eventually supersede human agency.\nIt offers a provocative look at the potential trajectories of evolution and civilization.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "10",
+      "title": "Sapiens",
+      "authorId": 9,
+      "year": 2011,
+      "price": 22,
+      "tags": [
+        "history",
+        "anthropology"
+      ],
+      "coverUrl": "/images/sapiens.png",
+      "description": "A brief history of humankind.\nYuval Noah Harari surveys the history of our species from the Stone Age up to the modern technological era.\nIt highlights how cognitive, agricultural, and scientific revolutions shaped societies through shared myths and cooperation.\nThe text connects biology and history to explain how Homo sapiens came to dominate planet Earth.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "11",
+      "title": "The Intelligent Investor",
+      "authorId": 10,
+      "year": 1949,
+      "price": 24.99,
+      "tags": [
+        "finance",
+        "investing"
+      ],
+      "coverUrl": "/images/intelligent_investor.png",
+      "description": "The definitive book on value investing.\nBenjamin Graham outlines core strategies to protect portfolios from substantial error and develop long-term financial discipline.\nIt teaches investors how to analyze market fluctuations and focus on the intrinsic value of businesses.\nWidely praised by legendary figures like Warren Buffett, it remains an indispensable financial guide.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "12",
+      "title": "The Lean Startup",
+      "authorId": 11,
+      "year": 2011,
+      "price": 17.5,
+      "tags": [
+        "business",
+        "entrepreneurship"
+      ],
+      "coverUrl": "/images/lean_startup.png",
+      "description": "How constant innovation creates radically successful businesses.\nEric Ries introduces a methodology that favors validated learning, rapid experimentation, and iterative product releases.\nIt helps entrepreneurs test visions continuously and adapt before large-scale capital investments are made.\nThe approach revolutionizes how startups are built and managed in fast-changing markets.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "13",
+      "title": "The Power of Habit",
+      "authorId": 12,
+      "year": 2012,
+      "price": 15.99,
+      "tags": [
+        "psychology",
+        "habits"
+      ],
+      "coverUrl": "/images/power_of_habit.png",
+      "description": "Why we do what we do in life and business.\nCharles Duhigg explores the neurological loop underlying habit formation consisting of cue, routine, and reward.\nThrough engaging case studies, he explains how individuals, companies, and organizations transform their operations.\nIt empowers readers to harness habit loops to achieve lasting personal and collective change.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "14",
+      "title": "Rich Dad Poor Dad",
+      "authorId": 13,
+      "year": 1997,
+      "price": 13.99,
+      "tags": [
+        "finance",
+        "wealth"
+      ],
+      "coverUrl": "/images/rich_dad_poor_dad.png",
+      "description": "What the rich teach their kids about money.\nRobert Kiyosaki contrasts the financial mindsets and philosophies of his biological father with his rich surrogate father.\nIt challenges conventional wisdom regarding jobs, assets, liabilities, and formal financial education.\nThe book encourages readers to build asset columns that generate passive income and financial freedom.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "15",
+      "title": "The Alchemist",
+      "authorId": 14,
+      "year": 1988,
+      "price": 0,
+      "badge": "free",
+      "readUrl": "/pdf/the_alchemist.pdf",
+      "tags": [
+        "fiction",
+        "philosophy"
+      ],
+      "coverUrl": "/images/the_alchemist.png",
+      "description": "A magical novel about following your dream.\nIt tells the mystical story of Santiago, an Andalusian shepherd boy who journeys toward Egypt in search of hidden treasure.\nAlong the way, he learns to listen to his heart and understand the language of the universe.\nIt has inspired millions of readers worldwide to pursue their personal destinies.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "16",
+      "title": "The Subtle Art of Not Giving a F*ck",
+      "authorId": 15,
+      "year": 2016,
+      "price": 15,
+      "tags": [
+        "self-help",
+        "psychology"
+      ],
+      "coverUrl": "/images/the_subtle_art.png",
+      "description": "A counterintuitive approach to living a good life.\nMark Manson argues that embracing limitations, flaws, and adversities leads to genuine strength and resilience.\nInstead of chasing constant positivity, readers learn to choose what truly matters to them.\nIt delivers refreshing, blunt advice on finding meaning through personal responsibility.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "17",
+      "title": "Thinking, Fast and Slow",
+      "authorId": 16,
+      "year": 2011,
+      "price": 19.99,
+      "tags": [
+        "psychology",
+        "science"
+      ],
+      "coverUrl": "/images/thinking_fast_slow.png",
+      "description": "Explores the two systems that drive the way we think.\nDaniel Kahneman details System 1, which is fast and emotional, versus System 2, which is slower and more logical.\nIt highlights cognitive biases, heuristics, and mental shortcuts that affect decision-making in everyday life.\nThe groundbreaking work bridges behavioral economics and cognitive psychology.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "18",
+      "title": "To Kill a Mockingbird",
+      "authorId": 17,
+      "year": 1960,
+      "price": 9.5,
+      "tags": [
+        "classic",
+        "drama"
+      ],
+      "coverUrl": "/images/to_kill_a_mockingbird.png",
+      "description": "Pulitzer Prize-winning novel by Harper Lee.\nSet in the American South, it addresses deeply rooted racial injustice and moral growth through young Scout Finch's eyes.\nHer father, Atticus Finch, defends a falsely accused Black man, demonstrating profound integrity.\nIt stands as a monumental pillar of classic American fiction and social conscience.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "19",
+      "title": "How to Win Friends and Influence People",
+      "authorId": 18,
+      "year": 1936,
+      "price": 12.99,
+      "tags": [
+        "self-help",
+        "communication"
+      ],
+      "coverUrl": "/images/win_friends.png",
+      "description": "One of the best-selling self-help books of all time.\nDale Carnegie provides timeless fundamental techniques for handling people and improving interpersonal communication.\nIt emphasizes empathy, appreciation, and genuine interest in others to build lasting relationships.\nThe practical principles continue to guide professional success and social harmony.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "20",
+      "title": "Palace Walk",
+      "authorId": 19,
+      "year": 1956,
+      "price": 15,
+      "tags": [
+        "classic",
+        "historical-fiction"
+      ],
+      "coverUrl": "/images/Palace Walk.jpg",
+      "description": "The first novel of the famous Cairo Trilogy by Naguib Mahfouz.\nIt captures family life in Cairo during the politically turbulent era leading up to the 1919 revolution.\nCentered around the patriarchal figure Al-Sayyid Ahmad, it portrays strict domestic traditions alongside shifting national identities.\nIt is widely celebrated as a masterpiece of modern Arabic literature.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "21",
+      "title": "Diary of a Country Prosecutor",
+      "authorId": 20,
+      "year": 1937,
+      "price": 11.5,
+      "tags": [
+        "classic",
+        "literature"
+      ],
+      "coverUrl": "/images/Yawmiyat Na'ib fi al-Aryaf.jpeg",
+      "description": "Diary of a Country Prosecutor by Tawfiq el-Hakim.\nIt reflects the harrowing experiences and bureaucratic hurdles faced by a young official working in rural Egypt.\nThrough sharp irony and realism, it critiques the disconnect between formal law and impoverished village realities.\nThe narrative remains a foundational text in Egyptian narrative fiction.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "22",
+      "title": "The Blue Elephant",
+      "authorId": 21,
+      "year": 2012,
+      "price": 14,
+      "tags": [
+        "mystery",
+        "thriller"
+      ],
+      "coverUrl": "/images/The Blue Elephant.jpg",
+      "description": "A psychological thriller novel by Ahmed Mourad.\nIt follows a troubled psychiatrist who encounters a mysterious criminal case involving a former close friend.\nBlending mental illness, ancient Egyptian symbolism, and suspense, the plot keeps readers guessing.\nIt became a major contemporary bestseller adapted successfully into cinema.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "23",
+      "title": "God's World",
+      "authorId": 22,
+      "year": 1954,
+      "price": 10.5,
+      "tags": [
+        "short-stories",
+        "classic"
+      ],
+      "coverUrl": "/images/God's World.jpg",
+      "description": "A famous collection of short stories by Youssef Idries.\nIt captures the social struggles, emotional depths, and daily realities of ordinary Egyptian people.\nIdries masterfully uses colloquial realism to portray human dignity under difficult socioeconomic conditions.\nThe anthology highlights his exceptional contribution to Arab short story writing.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "24",
+      "title": "Memory in the Flesh",
+      "authorId": 23,
+      "year": 1993,
+      "price": 13,
+      "tags": [
+        "romance",
+        "literature"
+      ],
+      "coverUrl": "/images/Memory in the Flesh.jpg",
+      "description": "A prominent Arabic novel by Ahlam Mosteghanemi.\nIt weaves a poetic narrative of love, revolution, and artistic expression across Algeria and France.\nThe story connects a wounded painter with the daughter of his fallen revolutionary mentor.\nIt won high acclaim for its lyrical prose and profound emotional resonance.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "25",
+      "title": "Granada",
+      "authorId": 24,
+      "year": 1994,
+      "price": 16.5,
+      "tags": [
+        "historical-fiction",
+        "trilogy"
+      ],
+      "coverUrl": "/images/Granada.jpg",
+      "description": "A historical novel trilogy by Radwa Ashour.\nIt chronicles the lives of an Andalusian family following the fall of Granada in 1492.\nThe trilogy beautifully depicts cultural preservation, persecution, and resilience under Spanish rule.\nIt stands as a monumental achievement in modern historical fiction.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "26",
+      "title": "The Yacoubian Building",
+      "authorId": 25,
+      "year": 2002,
+      "price": 15.5,
+      "tags": [
+        "drama",
+        "contemporary"
+      ],
+      "coverUrl": "/images/The Yacoubian Building.jpg",
+      "description": "A bestselling novel detailing life in downtown Cairo by Alaa El Aswany.\nIt portrays an eclectic cast of residents inside a single apartment building, reflecting broader societal shifts.\nThe characters expose corruption, political oppression, religious extremism, and social inequality.\nIt became an international literary phenomenon translated into numerous languages.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "27",
+      "title": "Woman at Point Zero",
+      "authorId": 26,
+      "year": 1975,
+      "price": 9,
+      "tags": [
+        "drama",
+        "feminism"
+      ],
+      "coverUrl": "/images/Woman at Point Zero.jpg",
+      "description": "A powerful biographical novel by Nawal El Saadawi.\nIt recounts the life of Firdaus, a female prisoner awaiting execution who refuses to speak until her final hours.\nThrough her harrowing testimony, the book exposes systemic oppression and patriarchy in Egyptian society.\nIt remains a classic text of international feminist literature.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "28",
+      "title": "House of Jasmine",
+      "authorId": 27,
+      "year": 1998,
+      "price": 12,
+      "tags": [
+        "fiction",
+        "novel"
+      ],
+      "coverUrl": "/images/House of Jasmine.jpg",
+      "description": "An acclaimed novel by Ibrahim Abdel Meguid.\nIt captures the atmospheric historical texture and human interactions within Alexandria's diverse communities.\nThe narrative explores memory, identity, and political upheaval across shifting eras.\nAbdel Meguid's lyrical style highlights the cultural richness of Egyptian coastal life.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "29",
+      "title": "Legend of the Other World",
+      "authorId": 28,
+      "year": 2006,
+      "price": 11,
+      "tags": [
+        "horror",
+        "sci-fi"
+      ],
+      "coverUrl": "/images/Legend of the Other World.png",
+      "description": "Part of the famous metaphysical and horror series by Ahmed Khaled Tawfik.\nIt follows supernatural investigator Refaat Ismail as he encounters terrifying paranormal phenomena.\nThe story blends science fiction, folklore, and dark mystery in signature engaging fashion.\nIt captivated generations of young Arab readers interested in speculative fiction.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "30",
+      "title": "Utopia",
+      "authorId": 28,
+      "year": 2008,
+      "price": 13.5,
+      "tags": [
+        "dystopian",
+        "sci-fi"
+      ],
+      "coverUrl": "/images/Utopia.jpg",
+      "description": "A dystopian sci-fi novel set in future Egypt by Ahmed Khaled Tawfik.\nIt depicts an isolated gated community for the ultra-rich walled off from an impoverished, lawless wasteland.\nThe plot escalates when a bored resident ventures outside for a dangerous thrill.\nIt serves as a stark social critique of extreme class disparity.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "31",
+      "title": "Clean Code",
+      "authorId": 29,
+      "year": 2008,
+      "price": 29.99,
+      "tags": [
+        "programming",
+        "software-engineering"
+      ],
+      "coverUrl": "/images/Clean Code.jpg",
+      "description": "A handbook of agile software craftsmanship by Robert C. Martin.\nIt teaches developers how to write code that is readable, maintainable, and extensible.\nThe book uses numerous examples to illustrate good versus bad programming practices.\nIt is widely regarded as essential reading for professional software engineers.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "32",
+      "title": "Artificial Intelligence: A Modern Approach",
+      "authorId": 31,
+      "year": 2020,
+      "price": 95,
+      "tags": [
+        "ai",
+        "machine-learning"
+      ],
+      "coverUrl": "/images/Artificial Intelligence A Modern Approach.jpg",
+      "description": "The definitive textbook on artificial intelligence by Stuart Russell and Peter Norvig.\nIt offers comprehensive coverage of modern AI techniques, search algorithms, and neural networks.\nThe text is standard curriculum across universities worldwide for computer science students.\nIt explores both theoretical foundations and practical implementations of intelligent agents.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "33",
+      "title": "Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow",
+      "authorId": 33,
+      "year": 2019,
+      "price": 49.99,
+      "tags": [
+        "machine-learning",
+        "ai",
+        "python"
+      ],
+      "coverUrl": "/images/Hands-On Machine Learning with Scikit-Learn, Keras,.jpg",
+      "description": "Concepts, tools, and techniques to build intelligent systems by Aurélien Géron.\nIt provides practical coding examples using popular Python libraries for deep learning.\nReaders learn how to train models for computer vision, natural language processing, and regression.\nIt bridges theoretical machine learning concepts with real-world application building.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "34",
+      "title": "The Pragmatic Programmer",
+      "authorId": 29,
+      "year": 1999,
+      "price": 39.99,
+      "tags": [
+        "programming",
+        "software-engineering"
+      ],
+      "coverUrl": "/images/The Pragmatic Programmer.jpg",
+      "description": "Your journey to mastery in software development.\nIt offers practical advice on career growth, code debugging, and architectural design.\nThe authors share timeless tips to avoid technical debt and boost productivity.\nIt is a staple reference for developers aiming for engineering excellence.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "35",
+      "title": "Deep Learning",
+      "authorId": 30,
+      "year": 2016,
+      "price": 55,
+      "tags": [
+        "ai",
+        "deep-learning"
+      ],
+      "coverUrl": "/images/Deep Learning.jpg",
+      "description": "An MIT Press textbook on deep learning fundamentals by Ian Goodfellow, Yoshua Bengio, and Aaron Courville.\nIt covers mathematical prerequisites, deep feedforward networks, and optimization techniques.\nThe book serves as an authoritative reference for researchers and advanced practitioners.\nIt details the core mechanics driving modern artificial intelligence breakthroughs.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "36",
+      "title": "Learning Python",
+      "authorId": 29,
+      "year": 2013,
+      "price": 44.99,
+      "tags": [
+        "programming",
+        "python"
+      ],
+      "coverUrl": "/images/Learning Python.jpg",
+      "description": "Comprehensive introduction to the Python programming language.\nIt guides readers through core syntax, data structures, and object-oriented programming.\nThe book provides clear explanations and code exercises suitable for all skill levels.\nIt remains a trusted guide for mastering Python development fundamentals.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "37",
+      "title": "Designing Data-Intensive Applications",
+      "authorId": 32,
+      "year": 2017,
+      "price": 39.99,
+      "tags": [
+        "programming",
+        "architecture"
+      ],
+      "coverUrl": "/images/Designing Data-Intensive Applications.jpg",
+      "description": "The big ideas behind reliable, scalable, and maintainable systems by Martin Kleppmann.\nIt explores trade-offs in database architectures, streaming systems, and batch processing.\nEngineers learn how to build robust distributed systems capable of handling massive data loads.\nIt is widely celebrated as the best practical guide to backend system design.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "38",
+      "title": "Cristiano Ronaldo: The Biography",
+      "authorId": 37,
+      "year": 2015,
+      "price": 15.99,
+      "tags": [
+        "football",
+        "biography",
+        "sports"
+      ],
+      "coverUrl": "/images/Cristiano Ronaldo The Biogr.jpg",
+      "description": "An in-depth biography covering the relentless ambition, rivalries, and records of Cristiano Ronaldo.\nGuillem Balagué traces his incredible rise from Madeira to global football icon.\nIt highlights his unmatched work ethic, dedication, and competitive drive.\nFans gain fascinating insights into the person behind the legendary celebrations.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "39",
+      "title": "Inverting the Pyramid: The History of Football Tactics",
+      "authorId": 36,
+      "year": 2008,
+      "price": 18.99,
+      "tags": [
+        "football",
+        "tactics",
+        "history"
+      ],
+      "coverUrl": "/images/Inverting the Pyramid The History.jpg",
+      "description": "The definitive history of football tactics, exploring how the greatest minds shaped the beautiful game.\nJonathan Wilson tracks tactical evolution from Victorian formations to modern pressing systems.\nIt explains the philosophy behind legendary managers and winning teams.\nAn essential read for anyone passionate about football analysis.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "40",
+      "title": "Ronaldo: The Rise of a Winner",
+      "authorId": 34,
+      "year": 2016,
+      "price": 14.99,
+      "tags": [
+        "football",
+        "biography",
+        "sports"
+      ],
+      "coverUrl": "/images/Ronaldo The Rise of a Winne.jpg",
+      "description": "The inspiring biography of Cristiano Ronaldo, tracing his journey from Madeira to global superstardom.\nLuca Caioli examines the pivotal moments that defined his career across Manchester United and Real Madrid.\nIt underscores the discipline required to maintain peak athletic performance.\nA compelling tribute to a footballing legend.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "41",
+      "title": "State of Play: The Secret Economy of Modern Football",
+      "authorId": 35,
+      "year": 2016,
+      "price": 16.5,
+      "tags": [
+        "football",
+        "business",
+        "sports"
+      ],
+      "coverUrl": "/images/State of Play The Secret Econ.jpg",
+      "description": "An eye-opening look into the multi-billion dollar business and hidden mechanics of modern professional football.\nMiguel Delaney investigates transfers, club ownership, and financial regulations.\nIt exposes the commercial pressures shaping the sport today.\nReaders discover the economic forces behind favorite clubs.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "42",
+      "title": "The Ball is Round: A Global History of Football",
+      "authorId": 38,
+      "year": 2006,
+      "price": 21.99,
+      "tags": [
+        "football",
+        "history",
+        "culture"
+      ],
+      "coverUrl": "/images/The Ball is Round A Global Histo.jpg",
+      "description": "A comprehensive and magisterial history of how football conquered the world.\nDavid Goldblatt explores the social, cultural, and political dimensions of the sport.\nIt covers legendary matches, players, and global tournaments across continents.\nA definitive encyclopedia for true football historians.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "43",
+      "title": "You Can Heal Your Life",
+      "authorId": 39,
+      "year": 1984,
+      "price": 0,
+      "badge": "free",
+      "readUrl": "/pdf/You-Can-Heal-Your-Life.pdf",
+      "tags": [
+        "self-help",
+        "spirituality",
+        "wellness"
+      ],
+      "coverUrl": "/images/you_can_heal_your_life.jpg",
+      "description": "A classic self-help guide on how our beliefs and thoughts can contribute to emotional and physical well-being by Louise Hay.\nIt promotes positive affirmations and self-love to overcome inner obstacles.\nThe book has empowered millions to transform their mental outlook and health.\nAn influential text in the personal growth movement.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "44",
+      "title": "Ancient Egypt (The Classical Encyclopedia)",
+      "authorId": 40,
+      "year": 1940,
+      "price": 25,
+      "tags": [
+        "pharaonic",
+        "history",
+        "egyptology"
+      ],
+      "coverUrl": "/images/ancient_egypt_selim_hassan.jpg",
+      "description": "A comprehensive foundational reference for the history of Pharaonic civilization, its customs, and beliefs by a pioneering Egyptian Egyptologist.\nSelim Hassan details archaeological findings across temples and royal tombs.\nIt provides unmatched scholarly depth on ancient Egyptian society.\nAn essential masterpiece for Egyptology enthusiasts.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "45",
+      "title": "The Rise and Fall of Ancient Egypt",
+      "authorId": 41,
+      "year": 2010,
+      "price": 19.99,
+      "tags": [
+        "pharaonic",
+        "history",
+        "civilization"
+      ],
+      "coverUrl": "/images/rise_and_fall_ancient_egypt.jpg",
+      "description": "An insightful historical analysis chronicling the Pharaohs from the dawn of unification to the empire's fall, highlighting politics and power struggles.\nToby Wilkinson brings ancient history to life with engaging narrative flair.\nIt examines the triumphs and tragedies of royal dynasties.\nA captivating read on ancient civilization dynamics.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "46",
+      "title": "Hatshepsut: The Female Pharaoh",
+      "authorId": 42,
+      "year": 1994,
+      "price": 16.5,
+      "tags": [
+        "pharaonic",
+        "biography",
+        "history"
+      ],
+      "coverUrl": "/images/hatshepsut_desroches.jpg",
+      "description": "A fascinating historical biography exploring one of ancient Egypt's greatest female rulers, under whom trade and arts deeply flourished.\nChristian Desroches Noblecourt details her rise to power and architectural achievements.\nIt celebrates her enduring legacy along the Nile.\nA brilliant tribute to New Kingdom history.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

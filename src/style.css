@@ -1,0 +1,181 @@
+/* ==========================================================
+   الثيم الداكن الشامل والقاطع لكل صناديق، كروت، هيدرات وأكوردين الموقع
+   ========================================================== */
+body.dark, 
+[data-bs-theme="dark"] {
+  background-color: #0b0c10 !important; /* الخلفية الرمادية الداكنة العامة */
+  color: #e5e7eb !important;
+}
+
+/* استهداف أي حاوية، صندوق، كارت، هيدر، أو عنصر ذو خلفية بيضاء وإجباره على التحول للون الداكن */
+body.dark div,
+body.dark section,
+body.dark article,
+body.dark main,
+body.dark header,
+body.dark .card,
+body.dark .book-card,
+body.dark .author-card,
+body.dark .accordion-item,
+body.dark .accordion-header,
+body.dark .accordion-body,
+body.dark .bg-white,
+body.dark .bg-light,
+body.dark [class*="bg-white"],
+body.dark [class*="bg-light"] {
+  background-color: #121318 !important;
+  color: #e5e7eb !important;
+  border-color: #1f2229 !important;
+}
+
+/* استثناء العناصر التي يجب أن تظل شفافة لكي لا تغطي على الخلفية العامة */
+body.dark .container,
+body.dark .container-fluid,
+body.dark .row,
+body.dark .col,
+body.dark [class*="col-"] {
+  background-color: transparent !important;
+}
+
+/* إجبار كافة العناوين والنصوص داخل الصناديق والكروت على الظهور بوضوح وتجنب الخلفيات البيضاء العالقة */
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark h4,
+body.dark h5,
+body.dark h6,
+body.dark .card-title,
+body.dark [style*="color: #212529"] {
+  background-color: transparent !important;
+  color: #ffffff !important;
+}
+
+/* إجبار كل الفقرات والنصوص والـ text-muted على أن تكون واضحة جداً ومقروءة */
+body.dark p,
+body.dark span,
+body.dark label,
+body.dark li,
+body.dark small,
+body.dark .text-muted,
+body.dark .lead,
+body.dark [style*="max-width"] {
+  color: #d1d5db !important;
+  background-color: transparent !important;
+}
+
+/* تعديل قاطع ومحدد لأزرار وأكورديون صفحة الـ About لضمان تحولها للون الغامق */
+body.dark .accordion-item,
+body.dark .accordion-header,
+body.dark .accordion-button,
+body.dark .accordion-collapse,
+body.dark .accordion-body {
+  background-color: #121318 !important;
+  color: #ffffff !important;
+  border-color: #1f2229 !important;
+}
+
+body.dark .accordion-button {
+  color: #60a5fa !important;
+  background-color: #121318 !important;
+}
+
+body.dark .accordion-button:not(.collapsed) {
+  color: #93c5fd !important;
+  background-color: #1a1c23 !important;
+  box-shadow: none !important;
+}
+
+body.dark .accordion-button::after {
+  filter: invert(1) brightness(2);
+}
+
+/* شريط التنقل (Navbar) */
+body.dark .navbar {
+  background-color: #121318 !important;
+  border-color: #1f2229 !important;
+}
+
+/* ==========================================================
+   إضافات قاطعة لجعل كروت الـ Home، الـ About، وباقي الكروت واضحة بنسبة 100% في الوضع الداكن
+   ========================================================== */
+body.dark .p-5.bg-white,
+body.dark div.bg-white,
+body.dark .rounded-4.shadow-sm.text-center.border-0,
+body.dark .card.border-0,
+body.dark .shadow-sm {
+  background-color: #121318 !important;
+  border: 1px solid #1f2229 !important;
+}
+
+body.dark .p-5.bg-white h1,
+body.dark .mb-5 h3,
+body.dark .card h3,
+body.dark .card h5 {
+  color: #ffffff !important;
+}
+
+/* جعل النصوص الوصفية داخل الكروت والأكورديون واضحة وبراقة تماماً */
+body.dark .p-5.bg-white .text-muted,
+body.dark .accordion-body.text-muted,
+body.dark .accordion-body,
+body.dark .card .text-muted {
+  color: #d1d5db !important;
+}
+
+/* ==========================================================
+   تعديل قاطع للـ Hero Section في الصفحة الرئيسية لتوحيد اللون الداكن
+   ========================================================== */
+body.dark .hero-section,
+[data-bs-theme="dark"] .hero-section {
+  background-color: #121318 !important;
+  background-image: none !important;
+  border: 1px solid #1f2229 !important;
+}
+
+/* ==========================================================
+   تعديل زر تبديل الثيم (Mode Button) في الوضع الداكن ليصبح أسود
+   ========================================================== */
+body.dark .btn-warning,
+[data-bs-theme="dark"] .btn-warning {
+  background-color: #1f2229 !important;
+  border-color: #374151 !important;
+  color: #f3f4f6 !important;
+}
+
+/* ==============================================================================
+   التعديل المطلوب: جعل كروت الـ Home تظهر كأوراق منفصلة على الخلفية الرمادية
+   ============================================================================== */
+
+/* 1. إزالة الكونتينر والفواصل في الـ Home */
+body.dark .home-section,
+body.dark .home-cards-container,
+body.dark .home-section .container,
+body.dark .home-section .row {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* 2. تحويل الكروت إلى "أوراق منفصلة" */
+body.dark .home-card,
+body.dark .home-section .card {
+  /* إزالة الخلفية الغامقة (لتظهر الخلفية الرمادية من تحتها) */
+  background-color: transparent !important;
+  
+  /* إزالة الحدود */
+  border: none !important;
+  
+  /* إزالة الظلال الداخلية الافتراضية */
+  box-shadow: none !important;
+  
+  /* إضافة تباعد خارجي (فراغات) لتبدو الكروت منفصلة عن بعضها */
+  margin-bottom: 20px !important; /* مسافة بين الكروت عمودياً */
+  
+  /* اختياري: إضافة ظل خفيف جداً لرفع الكروت قليلاً عن الخلفية وجعلها "ورقية" */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2) !important;
+  
+  /* التأكد من أن الحواف ناعمة */
+  border-radius: 8px !important;
+}
