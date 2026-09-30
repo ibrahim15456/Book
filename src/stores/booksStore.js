@@ -9,10 +9,9 @@ export const useBooksStore = defineStore('books', () => {
   const error = ref(null)
   const lastFetchedAt = ref(null)
 
-  // قائمة الكتب المقروءة (نجلبها من الـ localStorage إذا وجدت لضمان عدم فقدانها عند تحديث الصفحة)
   const alreadyReadBooks = ref(JSON.parse(localStorage.getItem('alreadyReadBooks')) || [])
 
-  // دالة إضافة كتاب لقائمة المقروءة
+
   const markAsRead = (book) => {
     const exists = alreadyReadBooks.value.some(b => b.id === book.id)
     if (!exists) {
@@ -21,7 +20,7 @@ export const useBooksStore = defineStore('books', () => {
     }
   }
 
-  // دالة إزالة كتاب من قائمة المقروءة
+ 
   const removeFromAlreadyRead = (bookId) => {
     alreadyReadBooks.value = alreadyReadBooks.value.filter(b => b.id != bookId)
     localStorage.setItem('alreadyReadBooks', JSON.stringify(alreadyReadBooks.value))
@@ -58,7 +57,7 @@ export const useBooksStore = defineStore('books', () => {
   const createBook = async (bookData) => {
     loading.value = true
     try {
-      // Validation check for author existence as requested in project specs
+      
       await api.get(`/authors/${bookData.authorId}`)
 
       const payload = {
@@ -120,13 +119,13 @@ export const useBooksStore = defineStore('books', () => {
     loading,
     error,
     lastFetchedAt,
-    alreadyReadBooks, // تم إضافتها هنا لتصبح متاحة في التطبيق
+    alreadyReadBooks,
     fetchList,
     fetchById,
     createBook,
     updateBook,
     removeBook,
-    markAsRead,          // تم إضافتها هنا
-    removeFromAlreadyRead // تم إضافتها هنا
+    markAsRead,          
+    removeFromAlreadyRead 
   }
 })

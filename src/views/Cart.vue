@@ -9,17 +9,19 @@
 
     <div v-else class="cart-container">
       <div class="cart-items">
-        <div v-for="item in cart" :key="item.id" class="cart-item">
-          <img :src="item.coverUrl" :alt="item.title" class="cart-item-img" />
-          <div class="cart-item-details">
-            <h4>{{ item.title }}</h4>
-            <p class="item-price">${{ Number(item.price || 0).toFixed(2) }}</p>
+        <transition-group name="list" tag="div" class="cart-items-list">
+          <div v-for="item in cart" :key="item.id" class="cart-item">
+            <img :src="item.coverUrl" :alt="item.title" class="cart-item-img" />
+            <div class="cart-item-details">
+              <h4>{{ item.title }}</h4>
+              <p class="item-price">${{ Number(item.price || 0).toFixed(2) }}</p>
+            </div>
+            <div class="cart-item-actions">
+              <span class="quantity">Qty: {{ item.quantity || 1 }}</span>
+              <button @click="removeFromCart(item.id)" class="btn-remove">Remove</button>
+            </div>
           </div>
-          <div class="cart-item-actions">
-            <span class="quantity">Qty: {{ item.quantity || 1 }}</span>
-            <button @click="removeFromCart(item.id)" class="btn-remove">Remove</button>
-          </div>
-        </div>
+        </transition-group>
       </div>
 
       <div class="cart-summary">
@@ -59,12 +61,10 @@ const removeFromCart = (id) => {
   emit('remove', id);
 };
 
-// حساب العدد الإجمالي للعناصر في السلة
 const totalItems = computed(() => {
   return props.cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
 });
 
-// حساب الإجمالي الكلي للأسعار
 const totalPrice = computed(() => {
   return props.cart.reduce((sum, item) => sum + ((item.price || 0) * (item.quantity || 1)), 0);
 });
@@ -98,6 +98,10 @@ const checkout = () => {
 .cart-items {
   display: flex;
   flex-direction: column;
+}
+.cart-items-list {
+  display: flex;
+  flex-direction: column;
   gap: 16px;
 }
 .cart-item {
@@ -108,6 +112,7 @@ const checkout = () => {
   padding: 16px;
   border-radius: 8px;
   gap: 16px;
+  transition: all 0.3s ease;
 }
 .cart-item-img {
   width: 60px;
@@ -129,7 +134,24 @@ const checkout = () => {
   padding: 6px 12px;
   border-radius: 4px;
   cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
 }
+.btn-remove:hover {
+  background: #d9363e;
+  transform: scale(1.05);
+}
+
+/* Vue Transition Group Animation for Removing Items */
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.4s ease;
+}
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
 .cart-summary {
   background: var(--card-bg, #fff);
   border: 1px solid var(--border);
@@ -150,7 +172,7 @@ const checkout = () => {
 }
 .btn-checkout {
   width: 100%;
-  background: #28a745; /* لون أخضر مناسب للـ Submit */
+  background: #28a745; 
   color: white;
   border: none;
   padding: 12px;
@@ -158,9 +180,13 @@ const checkout = () => {
   font-weight: bold;
   cursor: pointer;
   margin-top: 16px;
-  transition: background 0.2s;
+  transition: background 0.2s, transform 0.1s;
 }
 .btn-checkout:hover {
   background: #218838;
+  transform: translateY(-2px);
+}
+.btn-checkout:active {
+  transform: translateY(0);
 }
 </style>

@@ -2,7 +2,7 @@
   <div class="container py-4">
     <!-- Hero Header Card -->
     <div class="p-5 mb-5 rounded-4 shadow-sm text-center about-hero-section">
-      <h1 class="fw-bold mb-3 text-primary" style="letter-spacing: -0.5px;">About Books & Authors SPA</h1>
+      <h1 class="fw-bold mb-3 text-primary" style="letter-spacing: -0.5px;">About Books & Authors</h1>
       <p class="about-description lead mx-auto" style="max-width: 700px;">
         Discover the core philosophy and features behind our literary platform. Explore how we connect readers with a rich catalog of books and talented creators seamlessly.
       </p>

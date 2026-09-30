@@ -1,13 +1,11 @@
 <template>
   <div class="container-fluid py-3 d-flex flex-column vh-100">
-    <!-- شريط علوي يضم عنوان الكتاب، زر Mark as Read، وزر الرجوع -->
     <div class="d-flex justify-content-between align-items-center mb-3 px-3">
       <h3 class="mb-0">
          Reading: <span class="text-primary">{{ book?.title || 'Loading...' }}</span>
       </h3>
-      
       <div class="d-flex gap-2 align-items-center">
-        <!-- زر تحديد الكتاب كمقروء (يظهر حصرياً هنا داخل قارئ الـ PDF) -->
+        
         <button 
           v-if="book"
           @click="toggleReadStatus" 
@@ -22,13 +20,11 @@
       </div>
     </div>
 
-    <!-- عرض الـ PDF أو عارض الكتاب -->
     <div class="flex-grow-1 border rounded shadow-sm bg-light overflow-hidden position-relative">
       <div v-if="loading" class="d-flex justify-content-center align-items-center h-100">
         <div class="spinner-border text-primary" role="status"></div>
       </div>
       
-      <!-- محاكي عرض الـ PDF (استبدله بالـ iframe أو المكون الخاص بقارئ الـ PDF لديك) -->
       <iframe 
         v-if="book?.readUrl" 
         :src="book.readUrl" 
@@ -62,13 +58,11 @@ onMounted(async () => {
   }
 })
 
-// التحقق هل الكتاب مضاف لقائمة المقروءة أم لا
 const isAlreadyRead = computed(() => {
   if (!book.value) return false
   return booksStore.alreadyReadBooks.some(b => b.id == book.value.id)
 })
 
-// دالة التبديل عند الضغط على زر العلامة داخل قارئ الـ PDF
 const toggleReadStatus = () => {
   if (!book.value) return
   if (isAlreadyRead.value) {

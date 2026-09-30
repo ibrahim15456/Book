@@ -5,7 +5,7 @@
       <div class="col-md-6">
         <div class="card shadow-sm p-4 border">
           <div class="d-flex align-items-center justify-content-center gap-3 mb-3">
-            <img :src="adminIcon" alt="Admin Icon" style="width: 100px;; height: 100px; object-fit: contain;" />
+            <img :src="adminIcon" alt="Admin Icon" style="width: 100px; height: 100px; object-fit: contain;" />
             <h3 class="fw-bold mb-0">Admin Authentication</h3>
           </div>
           
@@ -82,7 +82,6 @@
 import { ref, onMounted } from 'vue'
 import { useBooksStore } from '../../stores/booksStore'
 import { useAuthorsStore } from '../../stores/authorsStore'
-// استيراد الصورة (تأكد أن مسارها صحيح بالنسبة لمكان هذا الملف)
 import adminIcon from '../../assets/admin_auth.jpg'
 
 const booksStore = useBooksStore()
@@ -96,9 +95,9 @@ const authError = ref('')
 const ADMIN_PASSWORD = 'hema777'
 
 onMounted(async () => {
-  if (sessionStorage.getItem('isAdminAuth') === 'true') {
-    isAuthenticated.value = true
-  }
+  // فرضه كحالة تسجيل خروج افتراضياً في كل مرة يتم فيها فتح أو إعادة تحميل الصفحة
+  sessionStorage.removeItem('isAdminAuth')
+  isAuthenticated.value = false
 
   await Promise.all([
     booksStore.fetchList(),

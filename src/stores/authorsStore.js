@@ -4,14 +4,14 @@ import api from '../services/api'
 
 export const useAuthorsStore = defineStore('authors', () => {
   const authors = ref([])
-  const allAuthors = ref([]) // هنحفظ النسخة الأصلية هنا
+  const allAuthors = ref([]) 
   const currentAuthor = ref(null)
   const loading = ref(false)
   const error = ref(null)
   const lastFetchedAt = ref(null)
 
   const fetchList = async () => {
-    // لو البيانات متجلوبتش قبل كده أو حابين نعملها تحميل
+
     if (allAuthors.value.length > 0) return
     loading.value = true
     error.value = null
@@ -27,7 +27,7 @@ export const useAuthorsStore = defineStore('authors', () => {
     }
   }
 
-const filterAuthors = (query) => {
+  const filterAuthors = (query) => {
     if (!query) {
       authors.value = allAuthors.value
       return

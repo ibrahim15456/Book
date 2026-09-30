@@ -13,7 +13,7 @@
     <ChatWidget />
 
     <footer class="text-center py-3 border-top mt-auto" :class="isDarkTheme ? 'bg-dark text-light border-secondary' : 'bg-light text-dark'">
-      <p class="mb-0">&copy; 2026 - Books & Authors SPA (ITI Vue Project)</p>
+      <p class="mb-0">&copy; 2026 - Ibra Book</p>
     </footer>
   </div>
 </template>
@@ -28,7 +28,7 @@ const cart = ref([]);
 const isDarkTheme = ref(false);
 
 onMounted(() => {
-  // فحص الثيم المحفوظ أو حالة كلاس الـ body عند التحميل الأول
+ 
   const savedTheme = localStorage.getItem('theme');
   if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
     isDarkTheme.value = true;
@@ -40,7 +40,7 @@ onMounted(() => {
     document.documentElement.setAttribute('data-bs-theme', 'light');
   }
 
-  // مراقبة تغييرات كلاس الـ body فور الضغط على زرار التبديل
+  
   const observer = new MutationObserver(() => {
     isDarkTheme.value = document.body.classList.contains('dark');
   });
@@ -48,10 +48,10 @@ onMounted(() => {
   observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
 });
 
-// تعديل شفافية الخلفية لتكون أداكن بكثير في الوضع الليلي لتخفي أي بقايا بيضاء
+
 const appBackgroundStyle = computed(() => {
   const gradient = isDarkTheme.value
-    ? 'linear-gradient(rgba(11, 12, 16, 0.92), rgba(11, 12, 16, 0.92))' // خلفية داكنة صريحة وقوية
+    ? 'linear-gradient(rgba(11, 12, 16, 0.92), rgba(11, 12, 16, 0.92))' 
     : 'linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4))';
 
   return {
@@ -83,6 +83,6 @@ const cartCount = computed(() => {
 
 <style>
 #app {
-  /* التنسيقات الأساسية تدار ديناميكياً عبر المتغيرات والخصائص المحسوبة */
+  
 }
 </style>

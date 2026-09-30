@@ -1,21 +1,21 @@
 <template>
   <div class="container py-3">
-    
-    <!-- قسم الهيدر -->
+    <!-- تشغيل الـ Animation عند تحميل الصفحة أو الـ Refresh -->
+    <BookAnimation />
+
     <div class="row mb-4">
       <div class="col-md-9 col-lg-7 mx-auto">
         <div class="card border-0 shadow-sm text-center py-4 px-5 explore-card rounded-4">
           <div class="d-flex flex-column align-items-center">
-            <!-- الصورة بحجم مناسب ومتناسق -->
             <img 
               src="/images/explore.jpg" 
               alt="Explore Books Banner" 
               class="mb-3"
               style="width: 100px; height: 100px; object-fit: contain;"
             >
-            <!-- العنوان الرئيسي -->
+           
             <h3 class="fw-bold mb-2 explore-title">Explore Books</h3>
-            <!-- الوصف -->
+            
             <p class="mb-0 explore-desc">
               Browse through a wide variety of books complete with tags, publication years, and detailed descriptions.
             </p>
@@ -24,7 +24,6 @@
       </div>
     </div>
 
-    <!-- فلاتر البحث -->
     <div class="row g-3 mb-4">
       <div class="col-md-3">
         <input 
@@ -50,7 +49,6 @@
           </option>
         </select>
       </div>
-      <!-- فلتر السعر الجديد -->
       <div class="col-md-3">
         <select class="form-select" v-model="selectedPriceFilter">
           <option value="">Filter by Price (All)</option>
@@ -60,32 +58,24 @@
       </div>
     </div>
 
-    <!-- Loading State -->
     <div v-if="booksStore.loading" class="text-center py-5">
       <div class="spinner-border text-primary" role="status">
         <span class="visually-hidden">Loading...</span>
       </div>
     </div>
-
-    <!-- Error State with Retry -->
     <div v-else-if="booksStore.error" class="alert alert-danger text-center" role="alert">
       <p>{{ booksStore.error }}</p>
       <button class="btn btn-outline-danger btn-sm" @click="loadData">Retry</button>
     </div>
-
-    <!-- Empty State -->
     <div v-else-if="filteredBooks.length === 0" class="text-center py-5 text-muted">
       <i class="bi bi-journal-x fs-1"></i>
       <p class="mt-2">No books found matching your criteria.</p>
     </div>
-
-    <!-- Books Grid (Flip Cards) -->
     <div v-else class="row g-4">
       <div class="col-md-4 col-lg-3" v-for="book in filteredBooks" :key="book.id">
         <div class="flip-card">
           <div class="flip-card-inner">
-            
-            <!-- الوجه الأمامي للكارت (Front) -->
+          
             <div class="flip-card-front card h-100 shadow-sm border-0">
               <div class="position-relative">
                 <img 
@@ -115,8 +105,6 @@
                 </div>
               </div>
             </div>
-
-            <!-- الوجه الخلفي للكارت (Back) - عرض الوصف بالكامل بدون Scroll -->
             <div class="flip-card-back card h-100 shadow-sm border-0 p-3 d-flex flex-column justify-content-between text-start">
               <div>
                 <h5 class="card-title text-truncate mb-2">{{ book.title }}</h5>
@@ -148,6 +136,7 @@
 import { ref, computed, onMounted } from 'vue'
 import { useBooksStore } from '../stores/booksStore'
 import { useAuthorsStore } from '../stores/authorsStore'
+import BookAnimation from '../components/BookAnimation.vue'
 
 const booksStore = useBooksStore()
 const authorsStore = useAuthorsStore()
@@ -202,7 +191,6 @@ const filteredBooks = computed(() => {
 </script>
 
 <style scoped>
-/* إعدادات حاوية الـ Flip Card */
 .flip-card {
   background-color: transparent;
   perspective: 1000px;
@@ -218,12 +206,10 @@ const filteredBooks = computed(() => {
   transform-style: preserve-3d;
 }
 
-/* عند مرور الماوس يتم دوران الكارت 180 درجة */
 .flip-card:hover .flip-card-inner {
   transform: rotateY(180deg);
 }
 
-/* إخفاء الوجه الخلفي أثناء الدوران وضبط الخصائص */
 .flip-card-front, .flip-card-back {
   position: absolute;
   width: 100%;
@@ -232,20 +218,17 @@ const filteredBooks = computed(() => {
   backface-visibility: hidden;
 }
 
-/* الوجه الأمامي */
 .flip-card-front {
   background-color: #fff;
   color: black;
 }
 
-/* الوجه الخلفي بدون Scroll */
 .flip-card-back {
   background-color: #f8f9fa;
   color: black;
   transform: rotateY(180deg);
 }
 
-/* الوضع الافتراضي للعنصر */
 .explore-card {
   background-color: #ffffff;
 }
@@ -256,7 +239,6 @@ const filteredBooks = computed(() => {
   color: #6b7280;
 }
 
-/* الوضع الداكن (Dark Mode) */
 :global(body.dark) .explore-card {
   background-color: #121318 !important;
   border: 1px solid #1f2229 !important;
