@@ -1,6 +1,15 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-import api from '../services/api'
+import { db } from '../firebase'
+import { 
+  collection, 
+  getDocs, 
+  doc, 
+  getDoc, 
+  setDoc, 
+  updateDoc, 
+  deleteDoc 
+} from 'firebase/firestore'
 
 export const useAuthorsStore = defineStore('authors', () => {
   const authors = ref([])
@@ -11,16 +20,20 @@ export const useAuthorsStore = defineStore('authors', () => {
   const lastFetchedAt = ref(null)
 
   const fetchList = async () => {
-
     if (allAuthors.value.length > 0) return
     loading.value = true
     error.value = null
     try {
-      const response = await api.get('/authors')
-      allAuthors.value = response.data
-      authors.value = response.data
+      const querySnapshot = await getDocs(collection(db, "AUTHORS"))
+      const data = querySnapshot.docs.map(docSnapshot => ({
+        id: docSnapshot.id,
+        ...docSnapshot.data()
+      }))
+      allAuthors.value = data
+      authors.value = data
       lastFetchedAt.value = Date.now()
-    } catch (err) {
+    }
+    catch (err) {
       error.value = err.message || 'Failed to fetch authors'
     } finally {
       loading.value = false
@@ -43,11 +56,18 @@ export const useAuthorsStore = defineStore('authors', () => {
     loading.value = true
     error.value = null
     try {
-      const response = await api.get(`/authors/${id}`)
-      currentAuthor.value = response.data
-      return response.data
+      const docRef = doc(db, "AUTHORS", String(id))
+      const docSnap = await getDoc(docRef)
+      if (docSnap.exists()) {
+        const authorData = { id: docSnap.id, ...docSnap.data() }
+        currentAuthor.value = authorData
+        return authorData
+      } else {
+        throw new Error('Author not found')
+      }
     } catch (err) {
       error.value = err.message || 'Failed to fetch author details'
+      throw err
     } finally {
       loading.value = false
     }
@@ -56,15 +76,19 @@ export const useAuthorsStore = defineStore('authors', () => {
   const createAuthor = async (authorData) => {
     loading.value = true
     try {
+      // استخدام الـ ID الموجود أو إنشاء ID جديد في فايربيس
+      const authorId = authorData.id ? String(authorData.id) : doc(collection(db, "AUTHORS")).id
       const payload = {
         ...authorData,
+        id: authorId,
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString()
       }
-      const response = await api.post('/authors', payload)
-      allAuthors.value.push(response.data)
+      
+      await setDoc(doc(db, "AUTHORS", authorId), payload)
+      allAuthors.value.push(payload)
       authors.value = allAuthors.value
-      return response.data
+      return payload
     } catch (err) {
       error.value = err.message || 'Failed to create author'
       throw err
@@ -76,15 +100,20 @@ export const useAuthorsStore = defineStore('authors', () => {
   const updateAuthor = async (id, authorData) => {
     loading.value = true
     try {
+      const docRef = doc(db, "AUTHORS", String(id))
       const payload = {
         ...authorData,
         updatedAt: new Date().toISOString()
       }
-      const response = await api.put(`/authors/${id}`, payload)
+      
+      await updateDoc(docRef, payload)
+      
       const index = allAuthors.value.findIndex(a => a.id == id)
-      if (index !== -1) allAuthors.value[index] = response.data
+      if (index !== -1) {
+        allAuthors.value[index] = { ...allAuthors.value[index], ...payload }
+      }
       authors.value = allAuthors.value
-      return response.data
+      return allAuthors.value[index]
     } catch (err) {
       error.value = err.message || 'Failed to update author'
       throw err
@@ -96,7 +125,9 @@ export const useAuthorsStore = defineStore('authors', () => {
   const removeAuthor = async (id) => {
     loading.value = true
     try {
-      await api.delete(`/authors/${id}`)
+      const docRef = doc(db, "AUTHORS", String(id))
+      await deleteDoc(docRef)
+      
       allAuthors.value = allAuthors.value.filter(a => a.id != id)
       authors.value = allAuthors.value
     } catch (err) {
