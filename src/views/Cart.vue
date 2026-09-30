@@ -35,9 +35,9 @@
           <span>${{ totalPrice.toFixed(2) }}</span>
         </div>
         
-        <!-- زرار إتمام الطلب / Submit -->
-        <button @click="checkout" class="btn-checkout">
-          Submit Order 
+        <!-- زرار إتمام الطلب وحفظه في Firebase -->
+        <button @click="checkout" class="btn-checkout" :disabled="isSubmitting">
+          {{ isSubmitting ? 'Submitting...' : 'Submit Order' }}
         </button>
       </div>
     </div>
@@ -45,7 +45,9 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import { ref, computed } from 'vue';
+import { db } from '../firebase';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 const props = defineProps({
   cart: {
@@ -56,6 +58,7 @@ const props = defineProps({
 });
 
 const emit = defineEmits(['remove', 'clear']);
+const isSubmitting = ref(false);
 
 const removeFromCart = (id) => {
   emit('remove', id);
@@ -69,9 +72,26 @@ const totalPrice = computed(() => {
   return props.cart.reduce((sum, item) => sum + ((item.price || 0) * (item.quantity || 1)), 0);
 });
 
-const checkout = () => {
-  alert('Thank you for your purchase! Order submitted successfully.');
-  emit('clear');
+const checkout = async () => {
+  if (props.cart.length === 0) return;
+  
+  isSubmitting.value = true;
+  try {
+    await addDoc(collection(db, "ORDERS"), {
+      items: props.cart,
+      totalItems: totalItems.value,
+      totalPrice: totalPrice.value,
+      createdAt: serverTimestamp()
+    });
+
+    alert('Thank you for your purchase! Order submitted and saved successfully.');
+    emit('clear');
+  } catch (error) {
+    console.error("Error submitting order: ", error);
+    alert('Failed to submit order. Please try again.');
+  } finally {
+    isSubmitting.value = false;
+  }
 };
 </script>
 
@@ -141,7 +161,6 @@ const checkout = () => {
   transform: scale(1.05);
 }
 
-/* Vue Transition Group Animation for Removing Items */
 .list-enter-active,
 .list-leave-active {
   transition: all 0.4s ease;
@@ -188,5 +207,10 @@ const checkout = () => {
 }
 .btn-checkout:active {
   transform: translateY(0);
+}
+.btn-checkout:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+  transform: none;
 }
 </style>

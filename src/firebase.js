@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import { getFirestore } from "firebase/firestore"; // أضفنا استيراد الفايرستور
 import { 
   getAuth, 
   GoogleAuthProvider, 
@@ -21,10 +22,12 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+const db = getFirestore(app); // أنشأنا نسخة قاعدة البيانات
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 
 export { 
+  db, // أضفنا db للتصدير عشان نقدر نستخدمها في أي مكان
   auth, 
   googleProvider, 
   signInWithPopup, 

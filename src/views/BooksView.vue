@@ -137,6 +137,8 @@ import { ref, computed, onMounted } from 'vue'
 import { useBooksStore } from '../stores/booksStore'
 import { useAuthorsStore } from '../stores/authorsStore'
 import BookAnimation from '../components/BookAnimation.vue'
+import { db } from '../firebase';
+import { collection, getDocs } from 'firebase/firestore';
 
 const booksStore = useBooksStore()
 const authorsStore = useAuthorsStore()
@@ -145,6 +147,8 @@ const searchQuery = ref('')
 const selectedAuthorId = ref('')
 const selectedType = ref('')
 const selectedPriceFilter = ref('')
+const querySnapshot = await getDocs(collection(db, "BOOKS"));
+const booksList = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
 
 const loadData = async () => {
   await Promise.all([
