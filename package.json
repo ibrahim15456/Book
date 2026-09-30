@@ -19,8 +19,5 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.1",
     "vite": "^6.0.0"
-  },
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
-  ]
+  }
 }
