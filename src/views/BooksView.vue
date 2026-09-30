@@ -131,14 +131,13 @@
     </div>
   </div>
 </template>
-
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useBooksStore } from '../stores/booksStore'
 import { useAuthorsStore } from '../stores/authorsStore'
 import BookAnimation from '../components/BookAnimation.vue'
-import { db } from '../firebase';
-import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../firebase'
+import { collection, getDocs } from 'firebase/firestore'
 
 const booksStore = useBooksStore()
 const authorsStore = useAuthorsStore()
@@ -147,14 +146,21 @@ const searchQuery = ref('')
 const selectedAuthorId = ref('')
 const selectedType = ref('')
 const selectedPriceFilter = ref('')
-const querySnapshot = await getDocs(collection(db, "BOOKS"));
-const booksList = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
 
 const loadData = async () => {
-  await Promise.all([
-    booksStore.fetchList(),
-    authorsStore.fetchList()
-  ])
+  try {
+    // جلب الكتب مباشرة من Firebase Firestore وتحديث الـ Store
+    const booksSnapshot = await getDocs(collection(db, "BOOKS"))
+    const booksData = booksSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+    
+    // لو الـ Store فيه طريقة لتحديد الكتب مباشرة، أو هنحدث الـ array بتاعتها
+    booksStore.books = booksData
+
+    // جلب المؤلفين أيضاً
+    await authorsStore.fetchList()
+  } catch (error) {
+    console.error("Error loading data from Firebase: ", error)
+  }
 }
 
 onMounted(() => {
@@ -178,7 +184,7 @@ const availableTypes = computed(() => {
 
 const filteredBooks = computed(() => {
   return booksStore.books.filter(book => {
-    const matchesTitle = book.title.toLowerCase().includes(searchQuery.value.toLowerCase())
+    const matchesTitle = book.title ? book.title.toLowerCase().includes(searchQuery.value.toLowerCase()) : false
     const matchesAuthor = selectedAuthorId.value === '' || book.authorId == selectedAuthorId.value
     const matchesType = selectedType.value === '' || (book.tags && book.tags.includes(selectedType.value))
     
