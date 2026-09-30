@@ -1,6 +1,4 @@
 {
-<<<<<<< HEAD
-=======
   "name": "books-authors-spa",
   "private": true,
   "version": "0.0.0",
@@ -10,22 +8,16 @@
     "build": "vite build",
     "preview": "vite preview"
   },
->>>>>>> 9da77bf89e5ed8468bad0291606036921f4c3cf2
   "dependencies": {
     "axios": "^1.20.0",
     "bootstrap": "^5.3.8",
     "bootstrap-icons": "^1.13.1",
     "firebase": "^12.19.0",
     "pinia": "^4.0.3",
-<<<<<<< HEAD
     "vue-router": "^4.6.4"
-=======
-    "vue": "^3.5.42",
-    "vue-router": "^5.3.1"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^6.0.8",
-    "vite": "^8.3.0"
->>>>>>> 9da77bf89e5ed8468bad0291606036921f4c3cf2
+    "@vitejs/plugin-vue": "^5.2.1",
+    "vite": "^6.0.0"
   }
 }
