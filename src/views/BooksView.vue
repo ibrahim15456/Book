@@ -34,12 +34,13 @@
         >
       </div>
       <div class="col-md-3">
-        <select class="form-select" v-model="selectedAuthorId">
-          <option value="">Filter by Author (All)</option>
-          <option v-for="author in authorsStore.authors" :key="author.id" :value="author.id">
-            {{ author.name }}
-          </option>
-        </select>
+        <!-- تحديث الفلتر ليتوافق مع البحث النصي للمؤلف أو الـ ID القديم -->
+        <input 
+          type="text" 
+          class="form-control" 
+          placeholder="Filter by Author..." 
+          v-model="selectedAuthor"
+        >
       </div>
       <div class="col-md-3">
         <select class="form-select" v-model="selectedType">
@@ -84,17 +85,18 @@
                   alt="Book cover"
                   style="height: 200px; object-fit: cover;"
                 >
+                <!-- تعديل شرط ظهور شارة Free بناءً على الحقل الجديد readUrl أو status -->
                 <span 
-                  v-if="book.price === 0 || book.badge" 
+                  v-if="book.readUrl && book.readUrl !== 'paid'" 
                   class="position-absolute top-0 end-0 m-2 badge bg-success shadow fs-6 px-3 py-2"
                 >
-                  {{ book.badge || 'Free' }}
+                  Free
                 </span>
               </div>
 
               <div class="card-body d-flex flex-column">
                 <h5 class="card-title text-truncate">{{ book.title }}</h5>
-                <p class="card-text text-muted small mb-3">By: {{ getAuthorName(book.authorId) }}</p>
+                <p class="card-text text-muted small mb-3">By: {{ book.author || getAuthorName(book.authorId) }}</p>
                 
                 <div class="mb-3">
                   <span v-for="tag in book.tags" :key="tag" class="badge bg-secondary me-1">{{ tag }}</span>
@@ -131,6 +133,7 @@
     </div>
   </div>
 </template>
+
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useBooksStore } from '../stores/booksStore'
@@ -143,20 +146,16 @@ const booksStore = useBooksStore()
 const authorsStore = useAuthorsStore()
 
 const searchQuery = ref('')
-const selectedAuthorId = ref('')
+const selectedAuthor = ref('')
 const selectedType = ref('')
 const selectedPriceFilter = ref('')
 
 const loadData = async () => {
   try {
-    // جلب الكتب مباشرة من Firebase Firestore وتحديث الـ Store
     const booksSnapshot = await getDocs(collection(db, "BOOKS"))
     const booksData = booksSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
-    
-    // لو الـ Store فيه طريقة لتحديد الكتب مباشرة، أو هنحدث الـ array بتاعتها
     booksStore.books = booksData
 
-    // جلب المؤلفين أيضاً
     await authorsStore.fetchList()
   } catch (error) {
     console.error("Error loading data from Firebase: ", error)
@@ -185,14 +184,18 @@ const availableTypes = computed(() => {
 const filteredBooks = computed(() => {
   return booksStore.books.filter(book => {
     const matchesTitle = book.title ? book.title.toLowerCase().includes(searchQuery.value.toLowerCase()) : false
-    const matchesAuthor = selectedAuthorId.value === '' || book.authorId == selectedAuthorId.value
+    
+    // دعم البحث بالمؤلف سواء كان نص حر (book.author) أو مرتبط بـ authorId القديم
+    const authorString = book.author || getAuthorName(book.authorId)
+    const matchesAuthor = selectedAuthor.value === '' || authorString.toLowerCase().includes(selectedAuthor.value.toLowerCase())
+    
     const matchesType = selectedType.value === '' || (book.tags && book.tags.includes(selectedType.value))
     
     let matchesPrice = true
     if (selectedPriceFilter.value === 'free') {
-      matchesPrice = book.price === 0
+      matchesPrice = book.readUrl && book.readUrl !== 'paid'
     } else if (selectedPriceFilter.value === 'paid') {
-      matchesPrice = book.price > 0
+      matchesPrice = !book.readUrl || book.readUrl === 'paid'
     }
 
     return matchesTitle && matchesAuthor && matchesType && matchesPrice
