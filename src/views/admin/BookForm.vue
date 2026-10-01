@@ -16,7 +16,6 @@
         <div class="form-text">Title must be between 3 and 100 characters.</div>
       </div>
 
-      <!-- تعديل خانة المؤلف لتكون نصاً حراً بدلاً من القائمة -->
       <div class="mb-3">
         <label class="form-label">Author *</label>
         <input 
@@ -60,16 +59,25 @@
         >
       </div>
 
-      <!-- إضافة خانة رابط القراءة PDF أو تعيينها كـ free -->
+      <!-- اختيار حالة الكتاب: Free أو Paid -->
       <div class="mb-3">
-        <label class="form-label">Read / PDF URL</label>
+        <label class="form-label">Book Status *</label>
+        <select class="form-select" v-model="form.status" required>
+          <option value="free">Free</option>
+          <option value="paid">Paid</option>
+        </select>
+      </div>
+
+      <!-- خانة رابط الـ PDF تظهر فقط لو الكتاب Free -->
+      <div class="mb-3" v-if="form.status === 'free'">
+        <label class="form-label">PDF Link / Read URL</label>
         <input 
-          type="text" 
+          type="url" 
           class="form-control" 
           v-model="form.readUrl" 
-          placeholder="https://... or type 'free'"
+          placeholder="https://..."
         >
-        <div class="form-text">Enter the PDF link or leave/type "free" if available for free reading.</div>
+        <div class="form-text">Enter the direct link to read or download the PDF.</div>
       </div>
 
       <div class="mb-3">
@@ -110,10 +118,11 @@ const errorMessage = ref('')
 
 const form = ref({
   title: '',
-  author: '', // تم تغييرها من authorId إلى author (نص حر)
+  author: '',
   year: new Date().getFullYear(),
   coverUrl: '',
-  readUrl: 'free', // القيمة الافتراضية لو مفيش رابط PDF
+  status: 'free', // القيمة الافتراضية
+  readUrl: '',
   description: ''
 })
 
@@ -128,7 +137,11 @@ onMounted(async () => {
   if (isEditMode.value) {
     const book = await booksStore.fetchById(route.params.id)
     if (book) {
-      form.value = { ...book }
+      form.value = { 
+        ...book,
+        status: book.readUrl && book.readUrl !== 'paid' ? 'free' : (book.status || 'free'),
+        readUrl: book.readUrl && book.readUrl !== 'free' && book.readUrl !== 'paid' ? book.readUrl : ''
+      }
       tagsInput.value = book.tags ? book.tags.join(', ') : ''
     }
   }
@@ -142,10 +155,16 @@ const handleSubmit = async () => {
     ? tagsInput.value.split(',').map(t => t.trim()).filter(Boolean)
     : []
 
+  // لو الكتاب مجاني وفيه رابط بنحفظ الرابط، لو مفيش رابط بنحفظها كلمة 'free' عشان الـ Badge تظهر
+  // لو الكتاب مدفوع بنخلي الـ readUrl بـ 'paid' أو فاضي حسب نظام الداتا عندك
+  const finalReadUrl = form.value.status === 'free' 
+    ? (form.value.readUrl ? form.value.readUrl.trim() : 'free') 
+    : 'paid'
+
   const payload = {
     ...form.value,
     tags,
-    readUrl: form.value.readUrl ? form.value.readUrl.trim() : 'free' // لو فاضية تخليها free
+    readUrl: finalReadUrl
   }
 
   try {
