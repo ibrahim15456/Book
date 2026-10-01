@@ -335,7 +335,7 @@
       "avatarUrl": "https://picsum.photos/80?42",
       "createdAt": "2025-01-01T10:00:00Z",
       "updatedAt": "2025-01-01T10:00:00Z"
-    },   {
+    },{
       "id": "43",
       "name": "Hanan Lashein",
       "bio": "Egyptian novelist and veterinary doctor, best known for her purposeful fiction series and novels that blend imagination with values and ethics.",
@@ -1073,7 +1073,7 @@
        "history",
        "science"
       ],
-      "coverUrl": "/images/socotra.jpg",
+      "coverUrl": "/images/Socotra.jpg",
       "description": "An enchanting and imaginative novel by Hanan Lashin that takes readers on a captivating journey to the magical archipelago of Socotra. \nIt weaves a rich narrative filled with deep human values, moral lessons, and thrilling adventures in a unique fantasy setting.",
       "createdAt": "2025-01-01T10:00:00Z",
       "updatedAt": "2025-01-01T10:00:00Z"
