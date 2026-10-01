@@ -44,7 +44,7 @@
                 </h6>
 
                 <p class="small text-muted mb-2">
-                  By {{ author ? author.name : 'Unknown' }}
+                  By {{ book.author || (author ? author.name : 'Unknown') }}
                 </p>
 
                 <div class="page-line"></div>
@@ -84,8 +84,9 @@
         <h4 class="text-muted mb-3">
           Author:
 
+          <!-- عرض اسم المؤلف مباشرة إذا كان نصاً حراً، أو عبر الـ router-link لو مرتبط بـ author ID -->
           <router-link
-            v-if="author"
+            v-if="author && !book.author"
             :to="`/authors/${author.id}`"
             class="text-decoration-none"
           >
@@ -93,7 +94,7 @@
           </router-link>
 
           <span v-else>
-            Loading...
+            {{ book.author || (author ? author.name : 'Unknown Author') }}
           </span>
         </h4>
 
