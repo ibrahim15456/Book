@@ -16,14 +16,16 @@
         <div class="form-text">Title must be between 3 and 100 characters.</div>
       </div>
 
+      <!-- تعديل خانة المؤلف لتكون نصاً حراً بدلاً من القائمة -->
       <div class="mb-3">
         <label class="form-label">Author *</label>
-        <select class="form-select" v-model="form.authorId" required>
-          <option value="" disabled>Select an author</option>
-          <option v-for="author in authorsStore.authors" :key="author.id" :value="author.id">
-            {{ author.name }}
-          </option>
-        </select>
+        <input 
+          type="text" 
+          class="form-control" 
+          v-model="form.author" 
+          placeholder="e.g. Andy Weir"
+          required
+        >
       </div>
 
       <div class="mb-3">
@@ -58,6 +60,18 @@
         >
       </div>
 
+      <!-- إضافة خانة رابط القراءة PDF أو تعيينها كـ free -->
+      <div class="mb-3">
+        <label class="form-label">Read / PDF URL</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          v-model="form.readUrl" 
+          placeholder="https://... or type 'free'"
+        >
+        <div class="form-text">Enter the PDF link or leave/type "free" if available for free reading.</div>
+      </div>
+
       <div class="mb-3">
         <label class="form-label">Description</label>
         <textarea 
@@ -85,12 +99,10 @@
 import { ref, computed, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useBooksStore } from '../../stores/booksStore'
-import { useAuthorsStore } from '../../stores/authorsStore'
 
 const route = useRoute()
 const router = useRouter()
 const booksStore = useBooksStore()
-const authorsStore = useAuthorsStore()
 
 const isEditMode = computed(() => !!route.params.id)
 const loading = ref(false)
@@ -98,9 +110,10 @@ const errorMessage = ref('')
 
 const form = ref({
   title: '',
-  authorId: '',
+  author: '', // تم تغييرها من authorId إلى author (نص حر)
   year: new Date().getFullYear(),
   coverUrl: '',
+  readUrl: 'free', // القيمة الافتراضية لو مفيش رابط PDF
   description: ''
 })
 
@@ -112,7 +125,6 @@ onMounted(async () => {
     return
   }
 
-  await authorsStore.fetchList()
   if (isEditMode.value) {
     const book = await booksStore.fetchById(route.params.id)
     if (book) {
@@ -132,7 +144,8 @@ const handleSubmit = async () => {
 
   const payload = {
     ...form.value,
-    tags
+    tags,
+    readUrl: form.value.readUrl ? form.value.readUrl.trim() : 'free' // لو فاضية تخليها free
   }
 
   try {
