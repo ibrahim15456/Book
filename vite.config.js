@@ -1,5 +1,5 @@
-import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import { defineConfig } from 'vite'
 import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vite.dev/config/
@@ -8,7 +8,7 @@ export default defineConfig({
     vue(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.svg', 'bg.png'],
+      includeAssets: ['favicon.svg', 'bg.png', 'logoo.png'],
       manifest: {
         name: 'Ibra Book Store',
         short_name: 'IbraBook',
@@ -16,14 +16,14 @@ export default defineConfig({
         theme_color: '#ffffff',
         icons: [
           {
-            src: '/favicon.svg',
+            src: '/logoo.png',
             sizes: '192x192',
-            type: 'image/svg+xml'
+            type: 'image/png'
           },
           {
-            src: '/favicon.svg',
+            src: '/logoo.png',
             sizes: '512x512',
-            type: 'image/svg+xml',
+            type: 'image/png',
             purpose: 'any maskable'
           }
         ]
