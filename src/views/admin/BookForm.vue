@@ -28,12 +28,12 @@
       </div>
 
       <div class="mb-3">
-        <label class="form-label">Publication Year (1800 - Current) *</label>
+        <label class="form-label">Publication Year (1- Current) *</label>
         <input 
           type="number" 
           class="form-control" 
           v-model.number="form.year" 
-          min="1800" 
+          min="1" 
           :max="new Date().getFullYear()"
           required
         >
