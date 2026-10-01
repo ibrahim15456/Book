@@ -335,7 +335,15 @@
       "avatarUrl": "https://picsum.photos/80?42",
       "createdAt": "2025-01-01T10:00:00Z",
       "updatedAt": "2025-01-01T10:00:00Z"
+    },   {
+      "id": "43",
+      "name": "Hanan Lashein",
+      "bio": "Egyptian novelist and veterinary doctor, best known for her purposeful fiction series and novels that blend imagination with values and ethics.",
+      "avatarUrl": "https://picsum.photos/80?43",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
     }
+
   ],
   "books": [
     {
@@ -1053,6 +1061,20 @@
       ],
       "coverUrl": "/images/hatshepsut_desroches.jpg",
       "description": "A fascinating historical biography exploring one of ancient Egypt's greatest female rulers, under whom trade and arts deeply flourished.\nChristian Desroches Noblecourt details her rise to power and architectural achievements.\nIt celebrates her enduring legacy along the Nile.\nA brilliant tribute to New Kingdom history.",
+      "createdAt": "2025-01-01T10:00:00Z",
+      "updatedAt": "2025-01-01T10:00:00Z"
+    },{
+      "id": "47",
+      "title": "Socotra",
+      "authorId": 43,
+      "year": 2015,
+      "price": 0,
+      "tags": [
+       "history",
+       "science"
+      ],
+      "coverUrl": "/images/socotra.jpg",
+      "description": "An enchanting and imaginative novel by Hanan Lashin that takes readers on a captivating journey to the magical archipelago of Socotra. \nIt weaves a rich narrative filled with deep human values, moral lessons, and thrilling adventures in a unique fantasy setting.",
       "createdAt": "2025-01-01T10:00:00Z",
       "updatedAt": "2025-01-01T10:00:00Z"
     }

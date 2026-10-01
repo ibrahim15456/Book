@@ -34,8 +34,7 @@
           <span>Total Price:</span>
           <span>${{ totalPrice.toFixed(2) }}</span>
         </div>
-        
-        <!-- زرار إتمام الطلب وحفظه في Firebase -->
+    
         <button @click="checkout" class="btn-checkout" :disabled="isSubmitting">
           {{ isSubmitting ? 'Submitting...' : 'Submit Order' }}
         </button>
