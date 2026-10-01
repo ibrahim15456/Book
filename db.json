@@ -392,7 +392,9 @@
       "title": "Brave New World",
       "authorId": 4,
       "year": 1932,
-      "price": 12.5,
+      "price": 0,
+      "badge": "free",
+      "readUrl": "/pdf/BraveNewWorld.pdf",
       "tags": [
         "sci-fi",
         "dystopian"
@@ -452,7 +454,9 @@
       "title": "The Great Gatsby",
       "authorId": 8,
       "year": 1925,
-      "price": 8.5,
+      "price": 0,
+      "badge": "free",
+      "readUrl": "/pdf/the-great-gatsby.pdf",
       "tags": [
         "classic",
         "novel"
@@ -467,7 +471,9 @@
       "title": "Homo Deus",
       "authorId": 9,
       "year": 2015,
-      "price": 20,
+       "price": 0,
+      "badge": "free",
+      "readUrl": "/pdf/homo_deus.pdf",
       "tags": [
         "history",
         "science"
@@ -799,7 +805,9 @@
       "title": "Clean Code",
       "authorId": 29,
       "year": 2008,
-      "price": 29.99,
+      "price": 0,
+      "badge": "free",
+      "readUrl": "/pdf/clean-code.pdf",
       "tags": [
         "programming",
         "software-engineering"
@@ -829,7 +837,9 @@
       "title": "Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow",
       "authorId": 33,
       "year": 2019,
-      "price": 49.99,
+      "price": 0,
+      "badge": "free",
+      "readUrl": "/pdf/Hands On MachineLearning-.pdf",
       "tags": [
         "machine-learning",
         "ai",
