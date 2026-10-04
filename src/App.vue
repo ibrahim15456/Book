@@ -19,16 +19,48 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, onMounted, onUnmounted } from 'vue';
 import Navbar from './components/Navbar.vue';
 import ChatWidget from './components/ChatWidget.vue';
 import bgImage from './assets/bg.png';
+import confetti from 'canvas-confetti';
 
 const cart = ref([]);
 const isDarkTheme = ref(false);
 
+// دالة إطلاق الألعاب النارية المذهلة لمدة 5 ثوانٍ
+const startFireworks = () => {
+  const duration = 5 * 1000; // 5 ثوانٍ
+  const animationEnd = Date.now() + duration;
+  const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 9999 };
+
+  const interval = setInterval(function() {
+    const timeLeft = animationEnd - Date.now();
+
+    if (timeLeft <= 0) {
+      return clearInterval(interval);
+    }
+
+    const particleCount = 50 * (timeLeft / duration);
+    
+    confetti({
+      ...defaults,
+      particleCount,
+      origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 }
+    });
+    confetti({
+      ...defaults,
+      particleCount,
+      origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 }
+    });
+  }, 250);
+};
+
+const randomInRange = (min, max) => {
+  return Math.random() * (max - min) + min;
+};
+
 onMounted(() => {
- 
   const savedTheme = localStorage.getItem('theme');
   if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
     isDarkTheme.value = true;
@@ -40,14 +72,19 @@ onMounted(() => {
     document.documentElement.setAttribute('data-bs-theme', 'light');
   }
 
-  
   const observer = new MutationObserver(() => {
     isDarkTheme.value = document.body.classList.contains('dark');
   });
   
   observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+
+  // الاستماع لحدث تفعيل الألعاب النارية القادم من الناف بار
+  window.addEventListener('trigger-fireworks', startFireworks);
 });
 
+onUnmounted(() => {
+  window.removeEventListener('trigger-fireworks', startFireworks);
+});
 
 const appBackgroundStyle = computed(() => {
   const gradient = isDarkTheme.value

@@ -106,7 +106,10 @@ const handleMagicClick = () => {
     console.log("Magic audio play failed:", error);
   });
   
-  // زاد الوقت قليلاً (1 ثانية) عشان الأنيميشن ياخد وقته ويبان بشكل مبهر
+  // إطلاق حدث الألعاب النارية لمدة 5 ثوانٍ عبر التطبيق بالكامل
+  window.dispatchEvent(new CustomEvent('trigger-fireworks'));
+  
+  // مدة تأثير الأنيميشن واللوجو
   setTimeout(() => {
     isMagical.value = false;
   }, 1000);

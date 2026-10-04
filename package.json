@@ -12,11 +12,13 @@
     "axios": "^1.20.0",
     "bootstrap": "^5.3.8",
     "bootstrap-icons": "^1.13.1",
+    "canvas-confetti": "^1.9.4",
     "firebase": "^12.19.0",
     "pinia": "^4.0.3",
     "vue-router": "^4.6.4"
   },
   "devDependencies": {
+    "@types/canvas-confetti": "^1.9.0",
     "@vitejs/plugin-vue": "^5.2.1",
     "vite": "^6.0.0"
   }
