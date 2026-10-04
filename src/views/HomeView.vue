@@ -21,7 +21,7 @@
           'col-12 active-expand': activeCard === 1,
           'card-hidden': activeCard !== null && activeCard !== 1
         }"
-        @mouseenter="activeCard = 1"
+        @mouseenter="playCardSound('Book.m4a'); activeCard = 1"
         @mouseleave="activeCard = null"
       >
         <div class="feature-card p-4 rounded-4 shadow-sm border-0 d-flex flex-column justify-content-center align-items-center">
@@ -51,7 +51,7 @@
           'col-12 active-expand': activeCard === 2,
           'card-hidden': activeCard !== null && activeCard !== 2
         }"
-        @mouseenter="activeCard = 2"
+        @mouseenter="playCardSound('Write.m4a'); activeCard = 2"
         @mouseleave="activeCard = null"
       >
         <div class="feature-card p-4 rounded-4 shadow-sm border-0 d-flex flex-column justify-content-center align-items-center">
@@ -73,7 +73,7 @@
         </div>
       </div>
 
-     
+      
       <div 
         class="card-col transition-all"
         :class="{
@@ -81,7 +81,7 @@
           'col-12 active-expand': activeCard === 3,
           'card-hidden': activeCard !== null && activeCard !== 3
         }"
-        @mouseenter="activeCard = 3"
+        @mouseenter="playCardSound('Duck.m4a'); activeCard = 3"
         @mouseleave="activeCard = null"
       >
         <div class="feature-card p-4 rounded-4 shadow-sm border-0 d-flex flex-column justify-content-center align-items-center">
@@ -111,6 +111,14 @@
 import { ref } from 'vue'
 
 const activeCard = ref(null)
+
+const playCardSound = (soundFileName) => {
+  const audio = new Audio(`/${soundFileName}`)
+  audio.volume = 0.5
+  audio.play().catch((error) => {
+    console.log("Audio play failed:", error)
+  })
+}
 </script>
 
 <style scoped>
