@@ -99,6 +99,13 @@ const userInitial = computed(() => {
 const handleMagicClick = () => {
   isMagical.value = true;
   
+  // تشغيل صوت السحر عند الضغط على الشعار
+  const audio = new Audio('/Magic.m4a');
+  audio.volume = 0.6;
+  audio.play().catch((error) => {
+    console.log("Magic audio play failed:", error);
+  });
+  
   // زاد الوقت قليلاً (1 ثانية) عشان الأنيميشن ياخد وقته ويبان بشكل مبهر
   setTimeout(() => {
     isMagical.value = false;
