@@ -128,6 +128,13 @@ export default {
     }
   },
   methods: {
+    // دالة مساعدة لتشغيل صوت الترحيب
+    playWelcomeSound() {
+      const welcomeAudio = new Audio('/Welcome.m4a');
+      welcomeAudio.volume = 0.7;
+      welcomeAudio.play().catch(err => console.log("Welcome audio error:", err));
+    },
+
     async signInWithGoogle() {
       try {
         const result = await signInWithPopup(auth, googleProvider)
@@ -138,6 +145,9 @@ export default {
         localStorage.setItem('userEmail', user.email)
         localStorage.setItem('userPhoto', user.photoURL)
         sessionStorage.setItem('isAdminAuth', 'true')
+
+        // تشغيل صوت الترحيب عند نجاح الدخول بـ Google
+        this.playWelcomeSound()
 
         // التحديث الفوري للـ Navbar
         window.dispatchEvent(new Event('user-logged-in'))
@@ -170,6 +180,9 @@ export default {
           localStorage.setItem('userInterests', JSON.stringify(this.interests))
           sessionStorage.setItem('isAdminAuth', 'true')
         }
+
+        // تشغيل صوت الترحيب عند نجاح تسجيل الدخول أو التسجيل الجديد
+        this.playWelcomeSound()
 
         // التحديث الفوري للـ Navbar
         window.dispatchEvent(new Event('user-logged-in'))

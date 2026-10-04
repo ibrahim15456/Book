@@ -53,7 +53,7 @@
               :class="isDarkMode ? 'text-light' : 'text-dark'">
               {{ userName || userEmail }}
             </span>
-            <button @click="handleSignOut" class="btn btn-sm btn-outline-danger ms-1">
+            <button @click="handleSignOut" class="btn btn-sm btn-outline-danger ms-1" :disabled="isLoggingOut">
               Sign Out
             </button>
           </div>
@@ -67,6 +67,21 @@
       </div>
     </div>
   </nav>
+
+  <!-- شاشة وداع وتحميل أثناء تسجيل الخروج (تستغرق 6 ثوانٍ) -->
+  <div v-if="isLoggingOut" class="logout-overlay">
+    <div class="logout-card text-center p-5 shadow-lg">
+      <div class="goodbye-icon mb-3">👋</div>
+      <h3 class="fw-bold mb-2 text-gradient">Goodbye, {{ userName || 'Friend' }}!</h3>
+      <p class="text-muted mb-4">We hope to see you again soon...</p>
+      
+      <!-- شريط التحميل المتدرج -->
+      <div class="progress-bar-container">
+        <div class="progress-fill"></div>
+      </div>
+      <span class="small text-secondary mt-2 d-block">Signing out securely...</span>
+    </div>
+  </div>
 </template>
 
 <script setup>
@@ -85,6 +100,7 @@ const isDarkMode = ref(false);
 const userName = ref('');
 const userEmail = ref('');
 const isMagical = ref(false);
+const isLoggingOut = ref(false); // حالة التحميل الخاصة بتسجيل الخروج
 
 const updateUserData = () => {
   userName.value = localStorage.getItem('userName') || '';
@@ -99,17 +115,14 @@ const userInitial = computed(() => {
 const handleMagicClick = () => {
   isMagical.value = true;
   
-  // تشغيل صوت السحر عند الضغط على الشعار
   const audio = new Audio('/Magic.m4a');
   audio.volume = 0.6;
   audio.play().catch((error) => {
     console.log("Magic audio play failed:", error);
   });
   
-  // إطلاق حدث الألعاب النارية لمدة 5 ثوانٍ عبر التطبيق بالكامل
   window.dispatchEvent(new CustomEvent('trigger-fireworks'));
   
-  // مدة تأثير الأنيميشن واللوجو
   setTimeout(() => {
     isMagical.value = false;
   }, 1000);
@@ -153,11 +166,27 @@ const toggleTheme = () => {
 };
 
 const handleSignOut = () => {
-  localStorage.removeItem('isAuthenticated');
-  localStorage.removeItem('userName');
-  localStorage.removeItem('userEmail');
-  updateUserData();
-  router.push('/auth');
+  isLoggingOut.value = true;
+
+  // تشغيل صوت الوداع
+  const goodbyeAudio = new Audio('/GoodBye.m4a');
+  goodbyeAudio.volume = 0.8;
+  goodbyeAudio.play().catch(err => console.log("GoodBye audio error:", err));
+
+  // الانتظار لمدة 6 ثوانٍ كاملة مع عرض تأثير الوداع والتحميل
+  setTimeout(() => {
+    localStorage.removeItem('isAuthenticated');
+    localStorage.removeItem('userName');
+    localStorage.removeItem('userEmail');
+    localStorage.removeItem('userPhoto');
+    localStorage.removeItem('userGender');
+    localStorage.removeItem('userInterests');
+    sessionStorage.removeItem('isAdminAuth');
+    
+    updateUserData();
+    isLoggingOut.value = false;
+    router.push('/auth');
+  }, 9000); // 9 ثوانٍ
 };
 </script>
 
@@ -173,27 +202,15 @@ const handleSignOut = () => {
   transition: all 0.4s ease;
 }
 
-/* تأثير الانفجار السحري حول اللوجو */
 .logo-wrapper.magic-burst {
   animation: logoExplosion 1s ease-in-out;
 }
 
 @keyframes logoExplosion {
-  0% {
-    transform: scale(1) rotate(0deg);
-  }
-  30% {
-    transform: scale(1.35) rotate(-10deg);
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.9), 0 0 40px rgba(138, 43, 226, 0.6);
-  }
-  60% {
-    transform: scale(1.2) rotate(10deg);
-    box-shadow: 0 0 30px rgba(255, 0, 128, 0.8), 0 0 50px rgba(0, 255, 255, 0.7);
-  }
-  100% {
-    transform: scale(1) rotate(0deg);
-    box-shadow: 0 0 0px transparent;
-  }
+  0% { transform: scale(1) rotate(0deg); }
+  30% { transform: scale(1.35) rotate(-10deg); box-shadow: 0 0 20px rgba(255, 215, 0, 0.9), 0 0 40px rgba(138, 43, 226, 0.6); }
+  60% { transform: scale(1.2) rotate(10deg); box-shadow: 0 0 30px rgba(255, 0, 128, 0.8), 0 0 50px rgba(0, 255, 255, 0.7); }
+  100% { transform: scale(1) rotate(0deg); box-shadow: 0 0 0px transparent; }
 }
 
 .nav-logo {
@@ -228,7 +245,6 @@ const handleSignOut = () => {
   opacity: 0.85;
 }
 
-/* حركة العصا السحرية المكبرة والساطعة */
 .magic-wand {
   display: inline-block;
   transform-origin: bottom center;
@@ -240,28 +256,12 @@ const handleSignOut = () => {
 }
 
 @keyframes giantMagicSpell {
-  0% {
-    transform: scale(1) rotate(0deg) translateY(0);
-  }
-  20% {
-    transform: scale(2.2) rotate(-35deg) translateY(-8px);
-    filter: drop-shadow(0 0 15px #ffd700);
-  }
-  40% {
-    transform: scale(2.5) rotate(45deg) translateY(-12px);
-    filter: drop-shadow(0 0 25px #ff007f);
-  }
-  60% {
-    transform: scale(1.8) rotate(-20deg) translateY(-5px);
-    filter: drop-shadow(0 0 15px #00ffff);
-  }
-  80% {
-    transform: scale(1.3) rotate(10deg);
-  }
-  100% {
-    transform: scale(1) rotate(0deg) translateY(0);
-    filter: drop-shadow(0 0 0px transparent);
-  }
+  0% { transform: scale(1) rotate(0deg) translateY(0); }
+  20% { transform: scale(2.2) rotate(-35deg) translateY(-8px); filter: drop-shadow(0 0 15px #ffd700); }
+  40% { transform: scale(2.5) rotate(45deg) translateY(-12px); filter: drop-shadow(0 0 25px #ff007f); }
+  60% { transform: scale(1.8) rotate(-20deg) translateY(-5px); filter: drop-shadow(0 0 15px #00ffff); }
+  80% { transform: scale(1.3) rotate(10deg); }
+  100% { transform: scale(1) rotate(0deg) translateY(0); filter: drop-shadow(0 0 0px transparent); }
 }
 
 .user-avatar-circle {
@@ -289,6 +289,91 @@ const handleSignOut = () => {
 :global(body.dark) .user-profile-badge {
   background-color: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* تصميم شاشة الوداع والتحميل (Overlay) */
+.logout-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeInOverlay 0.5s ease;
+}
+
+.logout-card {
+  background: white;
+  border-radius: 16px;
+  width: 350px;
+  max-width: 90%;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  animation: scaleUpCard 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+:global(body.dark) .logout-card {
+  background: #1e1e1e;
+  color: #f8f9fa;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.goodbye-icon {
+  font-size: 3.5rem;
+  animation: waveHand 1.5s infinite ease-in-out;
+}
+
+@keyframes waveHand {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(20deg); }
+  75% { transform: rotate(-20deg); }
+}
+
+.text-gradient {
+  background: linear-gradient(45deg, #ff416c, #ff4b2b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* شريط التحميل المدته 6 ثوانٍ */
+.progress-bar-container {
+  width: 100%;
+  height: 8px;
+  background-color: #e9ecef;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+:global(body.dark) .progress-bar-container {
+  background-color: #2d2d2d;
+}
+
+.progress-fill {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #ff416c, #ff4b2b);
+  border-radius: 4px;
+  animation: fillProgress 6s linear forwards;
+}
+
+@keyframes fillProgress {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+@keyframes fadeInOverlay {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleUpCard {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }
 </style>
 <!-- 
