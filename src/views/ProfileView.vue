@@ -49,7 +49,7 @@
         <div class="card shadow-sm border-0" :class="isDarkMode ? 'bg-dark text-light border-secondary' : 'bg-white text-dark'">
           <div class="card-body p-4">
             <div class="d-flex justify-content-between align-items-center mb-4">
-              <h4 class="fw-bold m-0">📖 Already Read Books</h4>
+              <h4 class="fw-bold m-0">Already Read Books</h4>
               <span class="badge bg-primary fs-6">{{ readBooks.length }} Books</span>
             </div>
 
