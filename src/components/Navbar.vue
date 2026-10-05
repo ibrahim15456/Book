@@ -47,10 +47,16 @@
 
           <div v-if="userName || userEmail" class="d-flex align-items-center gap-2 user-profile-badge" :class="isDarkMode ? 'dark-mode-badge' : ''">
             <router-link to="/profile" class="btn border d-flex align-items-center gap-2 text-decoration-none" :class="isDarkMode ? 'btn-dark text-light border-secondary' : 'btn-light text-dark'">
-              <span class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center fw-bold"
+              
+              <!-- عرض الصورة الشخصية لو متوفرة أو الحرف الأول -->
+              <div v-if="userAvatar" class="rounded-circle overflow-hidden d-inline-flex align-items-center justify-content-center bg-secondary" style="width: 28px; height: 28px;">
+                <img :src="userAvatar" alt="Avatar" class="w-100 h-100" style="object-fit: cover;" />
+              </div>
+              <span v-else class="rounded-circle bg-secondary text-white d-inline-flex align-items-center justify-content-center"
                 style="width: 28px; height: 28px; font-size: 0.85rem;">
                 {{ userInitial }}
               </span>
+
               <span class="fw-semibold" :class="isDarkMode ? 'text-light' : 'text-dark'">{{ userName || 'Ibrahim Mohamed' }}</span>
             </router-link>
 
@@ -68,8 +74,6 @@
       </div>
     </div>
   </nav>
-
-  <!-- شاشة وداع وتحميل أثناء تسجيل الخروج -->
   <div v-if="isLoggingOut" class="logout-overlay">
     <div class="logout-card text-center p-5 shadow-lg">
       <div class="goodbye-icon mb-3">👋</div>
@@ -99,12 +103,14 @@ const router = useRouter();
 const isDarkMode = ref(false);
 const userName = ref('');
 const userEmail = ref('');
+const userAvatar = ref(''); 
 const isMagical = ref(false);
 const isLoggingOut = ref(false);
 
 const updateUserData = () => {
   userName.value = localStorage.getItem('userName') || localStorage.getItem('user') || '';
   userEmail.value = localStorage.getItem('userEmail') || '';
+  userAvatar.value = localStorage.getItem('userAvatar') || ''; 
 };
 
 const userInitial = computed(() => {
@@ -146,12 +152,14 @@ onMounted(() => {
   window.addEventListener('storage', updateUserData);
   window.addEventListener('user-logged-in', updateUserData);
   window.addEventListener('username-updated', updateUserData);
+  window.addEventListener('avatar-updated', updateUserData); 
 });
 
 onUnmounted(() => {
   window.removeEventListener('storage', updateUserData);
   window.removeEventListener('user-logged-in', updateUserData);
   window.removeEventListener('username-updated', updateUserData);
+  window.removeEventListener('avatar-updated', updateUserData);
 });
 
 const toggleTheme = () => {
@@ -179,6 +187,7 @@ const handleSignOut = () => {
     localStorage.removeItem('userName');
     localStorage.removeItem('user');
     localStorage.removeItem('userEmail');
+    localStorage.removeItem('userAvatar'); 
     localStorage.removeItem('userPhoto');
     localStorage.removeItem('userGender');
     localStorage.removeItem('userInterests');

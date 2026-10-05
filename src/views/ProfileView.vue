@@ -5,11 +5,22 @@
         <!-- بطاقة معلومات الحساب -->
         <div class="card shadow-sm border-0 mb-4" :class="isDarkMode ? 'bg-dark text-light border-secondary' : 'bg-white text-dark'">
           <div class="card-body p-4 text-center">
-            <!-- الحرف الأول للـ Avatar -->
-            <div class="mb-3">
-              <div class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center fw-bold shadow" style="width: 80px; height: 80px; font-size: 2rem;">
+            
+            <!-- صورة البروفايل أو الحرف الأول -->
+            <div class="mb-3 position-relative d-inline-block">
+              <div v-if="userAvatar" class="rounded-circle shadow overflow-hidden d-inline-flex align-items-center justify-content-center bg-secondary" style="width: 90px; height: 90px;">
+                <img :src="userAvatar" alt="Profile Picture" class="w-100 h-100" style="object-fit: cover;" />
+              </div>
+              <div v-else class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center fw-bold shadow" style="width: 90px; height: 90px; font-size: 2rem;">
                 {{ userInitial }}
               </div>
+
+              <!-- زر تعديل الصورة (أيقونة كاميرا أو رفع) -->
+              <label for="avatarInput" class="position-absolute bottom-0 end-0 bg-primary text-white rounded-circle p-1 shadow cursor-pointer" style="width: 32px; height: 32px; display: flex; align-items: center;
+               cursor: pointer;" title="Change Profile Picture">
+                <i class="bi bi-camera-fill" style="font-size: 0.9rem;"></i>
+              </label>
+              <input type="file" id="avatarInput" class="d-none" accept="image/*" @change="handleImageUpload" />
             </div>
             
             <h3 class="fw-bold mb-1">{{ userName }}</h3>
@@ -94,6 +105,7 @@ export default {
     return {
       userName: "Ibrahim Mohamed",
       userEmail: "ibrahimmo12344@gmail.com",
+      userAvatar: "", // لتخزين مسار الصورة
       tempName: "",
       isEditing: false,
       readBooks: [],
@@ -125,9 +137,26 @@ export default {
     loadUserData() {
       const storedUser = localStorage.getItem('user') || localStorage.getItem('userName');
       const storedEmail = localStorage.getItem('userEmail');
+      const storedAvatar = localStorage.getItem('userAvatar');
 
       if (storedUser) this.userName = storedUser;
       if (storedEmail) this.userEmail = storedEmail;
+      if (storedAvatar) this.userAvatar = storedAvatar;
+    },
+    handleImageUpload(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          this.userAvatar = e.target.result;
+          localStorage.setItem('userAvatar', this.userAvatar);
+          
+          // إرسال حدث لتحديث الصورة في الـ Navbar لو متواجدة هناك أيضاً
+          window.dispatchEvent(new Event('avatar-updated'));
+          window.dispatchEvent(new Event('storage'));
+        };
+        reader.readAsDataURL(file);
+      }
     },
     startEditing() {
       this.tempName = this.userName;
@@ -140,6 +169,7 @@ export default {
       if (this.tempName.trim()) {
         this.userName = this.tempName.trim();
         localStorage.setItem('user', this.userName);
+        localStorage.getItem('userName', this.userName);
         localStorage.setItem('userName', this.userName);
         this.isEditing = false;
         
