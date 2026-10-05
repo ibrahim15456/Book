@@ -15,9 +15,8 @@
                 {{ userInitial }}
               </div>
 
-              <!-- زر تعديل الصورة (أيقونة كاميرا أو رفع) -->
-              <label for="avatarInput" class="position-absolute bottom-0 end-0 bg-primary text-white rounded-circle p-1 shadow cursor-pointer" style="width: 32px; height: 32px; display: flex; align-items: center;
-               cursor: pointer;" title="Change Profile Picture">
+              <!-- زر تعديل الصورة -->
+              <label for="avatarInput" class="position-absolute bottom-0 end-0 bg-primary text-white rounded-circle p-1 shadow cursor-pointer" style="width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer;" title="Change Profile Picture">
                 <i class="bi bi-camera-fill" style="font-size: 0.9rem;"></i>
               </label>
               <input type="file" id="avatarInput" class="d-none" accept="image/*" @change="handleImageUpload" />
@@ -26,37 +25,63 @@
             <h3 class="fw-bold mb-1">{{ userName }}</h3>
             <p class="text-muted mb-4">{{ userEmail }}</p>
             
+            <!-- رسالة التنبيه العامة (نجاح أو خطأ) -->
+            <div v-if="feedbackMessage" :class="['alert', feedbackType === 'success' ? 'alert-success' : 'alert-danger', 'py-2 px-3 mb-3 small']" role="alert">
+              {{ feedbackMessage }}
+            </div>
+
             <hr class="my-4" :class="isDarkMode ? 'border-secondary' : ''">
 
             <div class="text-start">
               <h5 class="fw-bold mb-3">Account Details</h5>
               <ul class="list-group list-group-flush" :class="isDarkMode ? 'bg-dark' : ''">
+                
                 <!-- Full Name مع زر التعديل -->
                 <li class="list-group-item d-flex justify-content-between align-items-center py-3" :class="isDarkMode ? 'bg-dark text-light border-secondary' : ''">
                   <span class="text-muted">Full Name</span>
                   <div class="d-flex align-items-center gap-2">
-                    <template v-if="!isEditing">
+                    <template v-if="!isEditingName">
                       <span class="fw-semibold">{{ userName }}</span>
-                      <button @click="startEditing" class="btn btn-sm btn-outline-primary ms-2">Edit</button>
+                      <button @click="startEditingName" class="btn btn-sm btn-outline-primary ms-2">Edit</button>
                     </template>
                     <template v-else>
                       <input type="text" v-model="tempName" class="form-control form-control-sm" :class="isDarkMode ? 'bg-dark text-light border-secondary' : ''" />
                       <button @click="saveName" class="btn btn-sm btn-success">Save</button>
-                      <button @click="cancelEditing" class="btn btn-sm btn-secondary">Cancel</button>
+                      <button @click="cancelEditingName" class="btn btn-sm btn-secondary">Cancel</button>
                     </template>
                   </div>
                 </li>
-                <!-- Email Address -->
+
                 <li class="list-group-item d-flex justify-content-between py-3" :class="isDarkMode ? 'bg-dark text-light border-secondary' : ''">
                   <span class="text-muted">Email Address</span>
                   <span class="fw-semibold">{{ userEmail }}</span>
                 </li>
+
+              
+                <li class="list-group-item d-flex justify-content-between align-items-center py-3" :class="isDarkMode ? 'bg-dark text-light border-secondary' : ''">
+                  <span class="text-muted">Password</span>
+                  <div class="d-flex align-items-center gap-2">
+                    <template v-if="!isEditingPassword">
+                      <span class="fw-semibold">••••••••••••</span>
+                      <button @click="startEditingPassword" class="btn btn-sm btn-outline-primary ms-2">Change</button>
+                    </template>
+                    <template v-else>
+                      <div class="d-flex flex-column gap-1">
+                        <input type="password" v-model="tempPassword" placeholder="New Password" class="form-control form-control-sm" :class="isDarkMode ? 'bg-dark text-light border-secondary' : ''" />
+                        <small v-if="passwordError" class="text-danger" style="font-size: 0.75rem;">{{ passwordError }}</small>
+                      </div>
+                      <button @click="savePassword" class="btn btn-sm btn-success">Save</button>
+                      <button @click="cancelEditingPassword" class="btn btn-sm btn-secondary">Cancel</button>
+                    </template>
+                  </div>
+                </li>
+
               </ul>
             </div>
           </div>
         </div>
 
-        <!-- سجل الكتب المقروءة (Already Read Books) -->
+        <!-- سجل الكتب المقروءة -->
         <div class="card shadow-sm border-0" :class="isDarkMode ? 'bg-dark text-light border-secondary' : 'bg-white text-dark'">
           <div class="card-body p-4">
             <div class="d-flex justify-content-between align-items-center mb-4">
@@ -105,9 +130,20 @@ export default {
     return {
       userName: "Ibrahim Mohamed",
       userEmail: "ibrahimmo12344@gmail.com",
-      userAvatar: "", // لتخزين مسار الصورة
+      userAvatar: "",
+      userPassword: "defaultPassword123",
+   
       tempName: "",
-      isEditing: false,
+      isEditingName: false,
+
+      tempPassword: "",
+      isEditingPassword: false,
+      passwordError: "",
+
+      feedbackMessage: "",
+      feedbackType: "success", 
+      messageTimer: null,
+
       readBooks: [],
       isDarkMode: false,
       observer: null
@@ -134,14 +170,24 @@ export default {
     document.documentElement.removeEventListener('click', this.checkDarkMode);
   },
   methods: {
+    showFeedback(message, type = 'success') {
+      if (this.messageTimer) clearTimeout(this.messageTimer);
+      this.feedbackMessage = message;
+      this.feedbackType = type;
+      this.messageTimer = setTimeout(() => {
+        this.feedbackMessage = "";
+      }, 5000); 
+    },
     loadUserData() {
       const storedUser = localStorage.getItem('user') || localStorage.getItem('userName');
       const storedEmail = localStorage.getItem('userEmail');
       const storedAvatar = localStorage.getItem('userAvatar');
+      const storedPassword = localStorage.getItem('userPassword');
 
       if (storedUser) this.userName = storedUser;
       if (storedEmail) this.userEmail = storedEmail;
       if (storedAvatar) this.userAvatar = storedAvatar;
+      if (storedPassword) this.userPassword = storedPassword;
     },
     handleImageUpload(event) {
       const file = event.target.files[0];
@@ -150,32 +196,66 @@ export default {
         reader.onload = (e) => {
           this.userAvatar = e.target.result;
           localStorage.setItem('userAvatar', this.userAvatar);
-          
-          // إرسال حدث لتحديث الصورة في الـ Navbar لو متواجدة هناك أيضاً
           window.dispatchEvent(new Event('avatar-updated'));
           window.dispatchEvent(new Event('storage'));
+          this.showFeedback("Profile picture updated successfully!", "success");
         };
         reader.readAsDataURL(file);
       }
     },
-    startEditing() {
+    startEditingName() {
       this.tempName = this.userName;
-      this.isEditing = true;
+      this.isEditingName = true;
     },
-    cancelEditing() {
-      this.isEditing = false;
+    cancelEditingName() {
+      this.isEditingName = false;
     },
     saveName() {
       if (this.tempName.trim()) {
         this.userName = this.tempName.trim();
         localStorage.setItem('user', this.userName);
-        localStorage.getItem('userName', this.userName);
         localStorage.setItem('userName', this.userName);
-        this.isEditing = false;
-        
+        this.isEditingName = false;
         window.dispatchEvent(new Event('username-updated'));
         window.dispatchEvent(new Event('storage'));
+        this.showFeedback("Name updated successfully!", "success");
       }
+    },
+    startEditingPassword() {
+      const lastPasswordChange = localStorage.getItem('lastPasswordChange');
+      if (lastPasswordChange) {
+        const now = new Date().getTime();
+        const diffTime = now - parseInt(lastPasswordChange, 10);
+        const thirtyDaysMs = 30 * 24 * 60 * 60 * 1000;
+
+        if (diffTime < thirtyDaysMs) {
+          const remainingDays = Math.ceil((thirtyDaysMs - diffTime) / (1000 * 60 * 60 * 24));
+          this.showFeedback(`You can only change your password once a month. Please wait ${remainingDays} more day(s).`, "danger");
+          return;
+        }
+      }
+
+      this.tempPassword = "";
+      this.passwordError = "";
+      this.isEditingPassword = true;
+    },
+    cancelEditingPassword() {
+      this.isEditingPassword = false;
+      this.passwordError = "";
+    },
+    savePassword() {
+      if (!this.tempPassword || this.tempPassword.length < 6) {
+        this.passwordError = "Password must be at least 6 characters.";
+        return;
+      }
+
+      this.userPassword = this.tempPassword;
+      localStorage.setItem('userPassword', this.userPassword);
+      localStorage.setItem('lastPasswordChange', new Date().getTime().toString());
+      
+      this.isEditingPassword = false;
+      this.passwordError = "";
+      this.showFeedback("Password updated successfully!", "success");
     },
     loadReadBooks() {
       try {
