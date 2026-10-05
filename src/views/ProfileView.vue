@@ -7,7 +7,7 @@
           <div class="card-body p-4 text-center">
             <!-- الحرف الأول للـ Avatar -->
             <div class="mb-3">
-              <div class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center fw-bold" style="width: 80px; height: 80px; font-size: 2rem;">
+              <div class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center fw-bold shadow" style="width: 80px; height: 80px; font-size: 2rem;">
                 {{ userInitial }}
               </div>
             </div>
@@ -61,7 +61,12 @@
             <div v-else class="row g-3">
               <div v-for="book in readBooks" :key="book.id" class="col-md-6">
                 <div class="d-flex align-items-center p-3 border rounded" :class="isDarkMode ? 'border-secondary bg-black bg-opacity-25' : 'bg-light'">
-                  <img :src="book.cover || book.image || 'https://via.placeholder.com/60x80'" alt="Book Cover" class="rounded me-3" style="width: 50px; height: 70px; object-fit: cover;">
+                  <img 
+                    :src="book.coverUrl || 'https://picsum.photos/120?placeholder'" 
+                    alt="Book cover" 
+                    class="rounded me-3" 
+                    style="width: 50px; height: 70px; object-fit: cover;"
+                  >
                   <div class="flex-grow-1">
                     <h6 class="fw-bold mb-1 text-truncate" style="max-width: 250px;">{{ book.title }}</h6>
                     <p class="text-muted small mb-0">{{ book.author || 'Unknown Author' }}</p>
@@ -138,7 +143,6 @@ export default {
         localStorage.setItem('userName', this.userName);
         this.isEditing = false;
         
-        // إرسال الأحداث لتحديث الـ Navbar فوراً في نفس اللحظة
         window.dispatchEvent(new Event('username-updated'));
         window.dispatchEvent(new Event('storage'));
       }
