@@ -8,7 +8,8 @@ import BookReaderView from '../views/BookReaderView.vue'
 import AuthorsView from '../views/AuthorsView.vue'
 import AuthorDetailsView from '../views/AuthorDetailsView.vue'
 import Cart from '../views/Cart.vue'
-import AlreadyReadView from '../views/AlreadyReadView.vue' // تم إضافته هنا
+import AlreadyReadView from '../views/AlreadyReadView.vue'
+import ProfileView from '../views/ProfileView.vue' // تمت إضافة صفحة الملف الشخصي
 
 import AdminDashboard from '../views/admin/AdminDashboard.vue'
 import AdminBooks from '../views/admin/AdminBooks.vue'
@@ -21,7 +22,8 @@ const routes = [
   { path: '/', name: 'home', component: HomeView, meta: { requiresAuth: true } },
   { path: '/about', name: 'about', component: AboutView, meta: { requiresAuth: true } },
   { path: '/books', name: 'books', component: BooksView, meta: { requiresAuth: true } },
-  { path: '/already-read', name: 'already-read', component: AlreadyReadView, meta: { requiresAuth: true } }, // تم إضافته هنا
+  { path: '/already-read', name: 'already-read', component: AlreadyReadView, meta: { requiresAuth: true } },
+  { path: '/profile', name: 'profile', component: ProfileView, meta: { requiresAuth: true } }, // مسار صفحة الـ Profile
   { path: '/books/:id', name: 'book-details', component: BookDetailsView, props: true, meta: { requiresAuth: true } },
   { path: '/books/:id/read', name: 'book-reader', component: BookReaderView, props: true, meta: { requiresAuth: true } },
   { path: '/authors', name: 'authors', component: AuthorsView, meta: { requiresAuth: true } },

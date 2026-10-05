@@ -45,14 +45,15 @@
             {{ isDarkMode ? '☀️ Light' : '🌙 Dark' }}
           </button>
 
-          <div v-if="userName || userEmail" class="d-flex align-items-center gap-2 user-profile-badge">
-            <div class="user-avatar-circle">
-              {{ userInitial }}
-            </div>
-            <span class="small fw-semibold text-truncate" style="max-width: 120px;"
-              :class="isDarkMode ? 'text-light' : 'text-dark'">
-              {{ userName || userEmail }}
-            </span>
+          <div v-if="userName || userEmail" class="d-flex align-items-center gap-2 user-profile-badge" :class="isDarkMode ? 'dark-mode-badge' : ''">
+            <router-link to="/profile" class="btn border d-flex align-items-center gap-2 text-decoration-none" :class="isDarkMode ? 'btn-dark text-light border-secondary' : 'btn-light text-dark'">
+              <span class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center fw-bold"
+                style="width: 28px; height: 28px; font-size: 0.85rem;">
+                {{ userInitial }}
+              </span>
+              <span class="fw-semibold" :class="isDarkMode ? 'text-light' : 'text-dark'">{{ userName || 'Ibrahim Mohamed' }}</span>
+            </router-link>
+
             <button @click="handleSignOut" class="btn btn-sm btn-outline-danger ms-1" :disabled="isLoggingOut">
               Sign Out
             </button>
@@ -68,14 +69,13 @@
     </div>
   </nav>
 
-  <!-- شاشة وداع وتحميل أثناء تسجيل الخروج (تستغرق 6 ثوانٍ) -->
+  <!-- شاشة وداع وتحميل أثناء تسجيل الخروج -->
   <div v-if="isLoggingOut" class="logout-overlay">
     <div class="logout-card text-center p-5 shadow-lg">
       <div class="goodbye-icon mb-3">👋</div>
       <h3 class="fw-bold mb-2 text-gradient">Goodbye, {{ userName || 'Friend' }}!</h3>
       <p class="text-muted mb-4">We hope to see you again soon...</p>
       
-      <!-- شريط التحميل المتدرج -->
       <div class="progress-bar-container">
         <div class="progress-fill"></div>
       </div>
@@ -100,10 +100,10 @@ const isDarkMode = ref(false);
 const userName = ref('');
 const userEmail = ref('');
 const isMagical = ref(false);
-const isLoggingOut = ref(false); // حالة التحميل الخاصة بتسجيل الخروج
+const isLoggingOut = ref(false);
 
 const updateUserData = () => {
-  userName.value = localStorage.getItem('userName') || '';
+  userName.value = localStorage.getItem('userName') || localStorage.getItem('user') || '';
   userEmail.value = localStorage.getItem('userEmail') || '';
 };
 
@@ -145,11 +145,13 @@ onMounted(() => {
   updateUserData();
   window.addEventListener('storage', updateUserData);
   window.addEventListener('user-logged-in', updateUserData);
+  window.addEventListener('username-updated', updateUserData);
 });
 
 onUnmounted(() => {
   window.removeEventListener('storage', updateUserData);
   window.removeEventListener('user-logged-in', updateUserData);
+  window.removeEventListener('username-updated', updateUserData);
 });
 
 const toggleTheme = () => {
@@ -168,15 +170,14 @@ const toggleTheme = () => {
 const handleSignOut = () => {
   isLoggingOut.value = true;
 
-  // تشغيل صوت الوداع
   const goodbyeAudio = new Audio('/GoodBye.m4a');
   goodbyeAudio.volume = 0.8;
   goodbyeAudio.play().catch(err => console.log("GoodBye audio error:", err));
 
-  // الانتظار لمدة 6 ثوانٍ كاملة مع عرض تأثير الوداع والتحميل
   setTimeout(() => {
     localStorage.removeItem('isAuthenticated');
     localStorage.removeItem('userName');
+    localStorage.removeItem('user');
     localStorage.removeItem('userEmail');
     localStorage.removeItem('userPhoto');
     localStorage.removeItem('userGender');
@@ -186,7 +187,7 @@ const handleSignOut = () => {
     updateUserData();
     isLoggingOut.value = false;
     router.push('/auth');
-  }, 9000); // 9 ثوانٍ
+  }, 9000);
 };
 </script>
 
@@ -264,21 +265,6 @@ const handleSignOut = () => {
   100% { transform: scale(1) rotate(0deg) translateY(0); filter: drop-shadow(0 0 0px transparent); }
 }
 
-.user-avatar-circle {
-  width: 34px;
-  height: 34px;
-  background-color: #6b7280;
-  color: #ffffff;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 14px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  flex-shrink: 0;
-}
-
 .user-profile-badge {
   background-color: rgba(0, 0, 0, 0.03);
   padding: 4px 10px 4px 4px;
@@ -286,12 +272,11 @@ const handleSignOut = () => {
   border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-:global(body.dark) .user-profile-badge {
+.dark-mode-badge {
   background-color: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* تصميم شاشة الوداع والتحميل (Overlay) */
 .logout-overlay {
   position: fixed;
   top: 0;
@@ -339,7 +324,6 @@ const handleSignOut = () => {
   -webkit-text-fill-color: transparent;
 }
 
-/* شريط التحميل المدته 6 ثوانٍ */
 .progress-bar-container {
   width: 100%;
   height: 8px;
@@ -358,7 +342,7 @@ const handleSignOut = () => {
   height: 100%;
   background: linear-gradient(90deg, #ff416c, #ff4b2b);
   border-radius: 4px;
-  animation: fillProgress 6s linear forwards;
+  animation: fillProgress 9s linear forwards;
 }
 
 @keyframes fillProgress {
