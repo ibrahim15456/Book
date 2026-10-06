@@ -74,6 +74,14 @@ const totalPrice = computed(() => {
 const checkout = async () => {
   if (props.cart.length === 0) return;
   
+  // تشغيل صوت الـ buy من مجلد الـ public مباشرة
+  try {
+    const audio = new Audio('/buy.m4a');
+    audio.play().catch((e) => console.log("Audio play error:", e));
+  } catch (err) {
+    console.log(err);
+  }
+
   isSubmitting.value = true;
   try {
     await addDoc(collection(db, "ORDERS"), {
