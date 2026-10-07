@@ -2,6 +2,7 @@
   <div class="cart-page">
     <h2>🛒 Shopping Cart</h2>
     
+    <!-- رسالة نجاح الطلب وتختفي تلقائياً -->
     <div v-if="successMessage" class="success-alert">
       {{ successMessage }}
     </div>
@@ -62,7 +63,7 @@ const props = defineProps({
 
 const emit = defineEmits(['remove', 'clear']);
 const isSubmitting = ref(false);
-const successMessage = ref(''); 
+const successMessage = ref('');
 
 const removeFromCart = (id) => {
   emit('remove', id);
@@ -79,6 +80,7 @@ const totalPrice = computed(() => {
 const checkout = async () => {
   if (props.cart.length === 0) return;
   
+  // تشغيل صوت الـ buy من مجلد الـ public مباشرة
   try {
     const audio = new Audio('/buy.m4a');
     audio.play().catch((e) => console.log("Audio play error:", e));
@@ -95,7 +97,13 @@ const checkout = async () => {
       createdAt: serverTimestamp()
     });
 
+    // إظهار رسالة النجاح
     successMessage.value = 'Thank you for your purchase! Order submitted and saved successfully.';
+    
+    // إخفاء الرسالة تلقائياً بعد 5 ثوانٍ (5000 ميللي ثانية)
+    setTimeout(() => {
+      successMessage.value = '';
+    }, 5000);
     
     emit('clear');
   } catch (error) {
