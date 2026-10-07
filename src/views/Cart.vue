@@ -2,6 +2,10 @@
   <div class="cart-page">
     <h2>🛒 Shopping Cart</h2>
     
+    <div v-if="successMessage" class="success-alert">
+      {{ successMessage }}
+    </div>
+
     <div v-if="cart.length === 0" class="empty-cart">
       <p>Your cart is empty.</p>
       <router-link to="/books" class="btn-primary">Browse Books</router-link>
@@ -58,6 +62,7 @@ const props = defineProps({
 
 const emit = defineEmits(['remove', 'clear']);
 const isSubmitting = ref(false);
+const successMessage = ref(''); 
 
 const removeFromCart = (id) => {
   emit('remove', id);
@@ -74,7 +79,6 @@ const totalPrice = computed(() => {
 const checkout = async () => {
   if (props.cart.length === 0) return;
   
-  // تشغيل صوت الـ buy من مجلد الـ public مباشرة
   try {
     const audio = new Audio('/buy.m4a');
     audio.play().catch((e) => console.log("Audio play error:", e));
@@ -91,7 +95,8 @@ const checkout = async () => {
       createdAt: serverTimestamp()
     });
 
-    alert('Thank you for your purchase! Order submitted and saved successfully.');
+    successMessage.value = 'Thank you for your purchase! Order submitted and saved successfully.';
+    
     emit('clear');
   } catch (error) {
     console.error("Error submitting order: ", error);
@@ -108,6 +113,24 @@ const checkout = async () => {
   max-width: 1000px;
   margin: 0 auto;
 }
+
+.success-alert {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 12px 20px;
+  border-radius: 4px;
+  border: 1px solid #c3e6cb;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 500;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .empty-cart {
   text-align: center;
   padding: 40px;
